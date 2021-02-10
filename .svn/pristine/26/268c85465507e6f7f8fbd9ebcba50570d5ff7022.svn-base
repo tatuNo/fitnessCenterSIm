@@ -1,0 +1,99 @@
+package osat;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.Ignore;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
+
+import osat.AsiakkaanTyyppi.AsiakkaanSukupuoli;
+import osat.Trace.Level;
+
+class AsiakasTest {
+	
+	private static Asiakas asiakas;
+	private static Kello kello;
+	
+	@BeforeAll
+	 static void setUpBeforeClass () throws Exception {
+		Trace.setTraceLevel(Level.WAR);
+		kello = Kello.getInstance();
+		asiakas = new Asiakas (AsiakkaanTyyppi.HIERONTA, AsiakkaanSukupuoli.MIES);
+	}
+	
+
+	@Test
+	void testGetAsiakkaanTyyppi() {
+		assertEquals(AsiakkaanTyyppi.HIERONTA, asiakas.getAsiakkaanTyyppi(),"Palautti väärän tyypin");
+	}
+	
+	
+	@Test
+	void testGetAsiakkaanSukupuoli() {
+		assertEquals(AsiakkaanSukupuoli.MIES, asiakas.getAsiakkaanSukupuoli(),"Palautti väärän sukupuolen");
+	}
+	
+	
+	@Test
+	void testPoistumisaika() {
+		double aika = 15.0;
+		asiakas.setPoistumisaika(aika);
+		assertEquals(15.0, asiakas.getPoistumisaika(), "Poistumisajan getter tai setter ei toimi");
+	}
+	
+	
+	@Test
+	void testSaapumisaika() {
+		double aika = 15.0;
+		asiakas.setSaapumisaika(aika);
+		assertEquals(15.0, asiakas.getSaapumisaika(), "Saapumisajan getter tai setter ei toimi");
+	}
+	
+	@Test
+	void testGetId() {
+		Asiakas kaksi = new Asiakas(AsiakkaanTyyppi.JUOKSIJA, AsiakkaanSukupuoli.NAINEN);
+		assertEquals(1, asiakas.getId(),"Piti olla toinen asiakas");
+	}
+	
+	
+	@Test
+	void testGetPalveltutAsiakkaat() {
+		for(int i = 0; i < 5; i++) {
+			asiakas.raportti();
+		}
+		assertEquals(5, asiakas.getPalveltutAsiakkaat(), "Palveltuja asiakkaita pitäisi olla 5");
+	}
+	
+	
+	@Test
+	void testLapimeno() {
+		double aika = 10.0;
+		asiakas.setLapimenoAloitus(aika);
+		assertEquals(aika, asiakas.getLapimenoAloitus(), "LäpimenoAloitus ei toimi");
+		aika = 12.4;
+		asiakas.setLapimenoLopetus(aika);
+		assertEquals(aika, asiakas.getLapimenoLopetus(), "LäpimenoLopetus ei toimi");
+	}
+	
+	@Ignore
+	@Test
+	void testRaportti() {
+		Asiakas a = new Asiakas(AsiakkaanTyyppi.FYSIOTERAPIA, AsiakkaanSukupuoli.NAINEN);
+		Asiakas b = new Asiakas(AsiakkaanTyyppi.FYSIOTERAPIA, AsiakkaanSukupuoli.NAINEN);
+		asiakas.setSaapumisaika(4.7);
+		asiakas.setPoistumisaika(10.3);
+		a.setSaapumisaika(7.2);
+		a.setPoistumisaika(13.4);
+		b.setSaapumisaika(11.2);
+		b.setPoistumisaika(18.2);
+		Asiakas [] asiakkaat = {asiakas, a, b};
+		long summa = 0;
+		
+		for (int i = 0; i < asiakkaat.length; i++) {
+			summa += (asiakkaat[i].getPoistumisaika() - asiakkaat[i].getPoistumisaika());
+		}
+		double keskiarvo = summa / asiakkaat.length;
+		String expected = "Asiakkaiden läpimenoaikojen keskiarvo " + keskiarvo;
+	}
+
+}

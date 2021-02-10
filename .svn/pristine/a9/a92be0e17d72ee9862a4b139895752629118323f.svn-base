@@ -1,0 +1,95 @@
+package osat;
+
+import java.util.LinkedList;
+
+import eduni.distributions.ContinuousGenerator;
+
+
+public class Palvelupiste {
+
+	private Moottori moottori;
+
+	private LinkedList<Asiakas> jono = new LinkedList<Asiakas>();
+	private ContinuousGenerator generator;
+	private TapahtumanTyyppi skeduloitavanTapahtumanTyyppi;
+	private int palveltutAsiakkaat;
+	private double aktiiviaika;
+	private double palvelunAloitus;
+	//JonoStartegia strategia; //optio: asiakkaiden j�rjestys
+	
+	private double lapimenoajat;
+	
+	private boolean varattu = false;
+	
+	private Suorituskykysuureet suureet;
+
+
+	public Palvelupiste(ContinuousGenerator generator, Moottori moottori, TapahtumanTyyppi tyyppi){
+		this.moottori = moottori;
+		this.generator = generator;
+		this.skeduloitavanTapahtumanTyyppi = tyyppi;
+				
+	}
+
+
+	public void lisaaJonoon(Asiakas a){   // Jonon 1. asiakas aina palvelussa
+		jono.add(a);
+		a.setLapimenoAloitus(Kello.getInstance().getAika());
+	}
+
+	public Asiakas otaJonosta(){  // Poistetaan palvelussa ollut
+		aktiiviaika += (Kello.getInstance().getAika() - palvelunAloitus);
+		varattu = false;
+		palveltutAsiakkaat++;
+		Asiakas a = jono.poll();
+		a.setLapimenoLopetus(Kello.getInstance().getAika());
+		lapimenoajat += (a.getLapimenoLopetus() - a.getLapimenoAloitus());
+		return a;
+	}
+
+	public void aloitaPalvelu(){  //Aloitetaan uusi palvelu, asiakas on jonossa palvelun aikana
+		varattu = true;
+		double palveluaika = generator.sample();
+		moottori.uusiTapahtuma(new Tapahtuma(skeduloitavanTapahtumanTyyppi,Kello.getInstance().getAika()+palveluaika));
+		palvelunAloitus = Kello.getInstance().getAika();
+	}
+
+
+	public boolean onVarattu(){
+		return varattu;
+	}
+
+
+	public boolean onJonossa(){
+		return jono.size() != 0;
+	}
+	
+	public int getJonoSize() {
+		return jono.size();
+	}
+	
+	public Suorituskykysuureet getSuorituskykysuureet() {
+		return suureet;
+	}
+	
+	public String raportti () {
+		double kayttoaste = (aktiiviaika / Kello.getInstance().getAika()) * 100.0;
+		kayttoaste = Math.round(kayttoaste * 100.0) / 100.0;
+		aktiiviaika = Math.round(aktiiviaika * 100.0) / 100.0;
+		
+		int tunnit = (int)Kello.getInstance().getAika() / 60;
+		double suoritusteho = palveltutAsiakkaat / (double) tunnit;
+		suoritusteho = Math.round(suoritusteho * 100.0) / 100.0;
+		
+		double avgpalveluaika = Math.round((aktiiviaika / palveltutAsiakkaat) * 100.0) / 100.0;
+		double avglapimenoaika = Math.round((lapimenoajat / palveltutAsiakkaat) * 100.0) / 100.0;
+		double avgjononpituus = Math.round((lapimenoajat / Kello.getInstance().getAika()) * 100.0) / 100.0;
+		lapimenoajat = Math.round(lapimenoajat * 100.0) / 100.0;
+		
+		suureet = new Suorituskykysuureet(palveltutAsiakkaat,aktiiviaika, kayttoaste, suoritusteho, avgpalveluaika, lapimenoajat, avglapimenoaika, avgjononpituus);
+		
+		return "Palveltuja asiakkaita: " + palveltutAsiakkaat + " AKTIIVIAIKA: " + aktiiviaika + " KÄYTTÖASTE: " + kayttoaste + "% " + " SUORITUSTEHO: "
+		+ suoritusteho + " asiakasta/tunti\n" + "AVG PALVELUAIKA: " + avgpalveluaika + " KOKONAISOLESKELUAIKA: " + lapimenoajat +
+		" AVG LÄPIMENOAIKA: "+ avglapimenoaika + " AVG JONON PITUUS "+ avgjononpituus + "\n";
+	}
+}

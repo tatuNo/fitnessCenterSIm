@@ -1,0 +1,6 @@
+package osat;
+
+public interface ISuorituskykysuureetDAO {
+	public boolean luoSuorituskykysuurre(Suorituskykysuureet suureet);
+	public Suorituskykysuureet [] lueSuorituskykysuurreet(String palvelupiste);
+}

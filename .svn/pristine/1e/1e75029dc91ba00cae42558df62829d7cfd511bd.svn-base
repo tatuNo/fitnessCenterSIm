@@ -1,0 +1,74 @@
+package osat;
+
+import java.util.LinkedList;
+
+public class Ryhmaliikunta {
+	
+	private Moottori moottori;
+
+	private LinkedList<Asiakas> jono = new LinkedList<Asiakas>();
+	private TapahtumanTyyppi skeduloitavanTapahtumanTyyppi;
+	private static final double PALVELUAIKA = 20;
+	private static final int KAPASITEETTI = 10;
+	private boolean onKaynnissa = false;
+	private int palveltutAsiakkaat;
+	private double aktiiviaika;
+	private Suorituskykysuureet suureet;
+	
+	public Ryhmaliikunta (Moottori moottori, TapahtumanTyyppi tyyppi) {
+		this.moottori = moottori;
+		this.skeduloitavanTapahtumanTyyppi = tyyppi;		
+	}
+	
+	
+	public void lisaaJonoon (Asiakas a) {
+		jono.add(a);
+	}
+	
+
+	public Asiakas otaJonosta() {
+		aktiiviaika += PALVELUAIKA / KAPASITEETTI;
+		onKaynnissa = false;
+		palveltutAsiakkaat++;
+		return jono.poll();
+	}
+	
+	public void aloitaPalvelu () {
+		onKaynnissa = true;
+		System.out.println("RYHMÄLIIKUNTA KÄYNTIIN");
+		for(int i = 0; i < jono.size(); i++) {
+			moottori.uusiTapahtuma(new Tapahtuma(skeduloitavanTapahtumanTyyppi,Kello.getInstance().getAika()+PALVELUAIKA));
+		}
+	}
+	
+	public boolean onTaysi () {
+		return jono.size() == KAPASITEETTI;
+	}
+	
+	public boolean getOnkaynnissa () {
+		return onKaynnissa;
+	}
+	
+	public int getJonoSize() {
+		return jono.size();
+	}
+
+	public Suorituskykysuureet getSuorituskykysuureet () {
+		return suureet;
+	}
+	
+	public String raportti () {
+		
+		double kayttoaste = (aktiiviaika / Kello.getInstance().getAika()) * 100.0;
+		kayttoaste = Math.round(kayttoaste * 100.0) / 100.0;
+		
+		int tunnit = (int)Kello.getInstance().getAika() / 60;
+		double suoritusteho = palveltutAsiakkaat / (double) tunnit;
+		suoritusteho = Math.round(suoritusteho * 100.0) / 100.0;
+		
+		suureet = new Suorituskykysuureet(palveltutAsiakkaat, aktiiviaika, kayttoaste, suoritusteho, PALVELUAIKA);
+		
+		return "Palveltuja asiakkaita: " + palveltutAsiakkaat + " AKTIIVIAIKA: " + aktiiviaika + " KÄYTTÖASTE: " + kayttoaste + "% " + " SUORITUSTEHO: "
+		+suoritusteho + " asiakasta/tunti\n" + "AVG PALVELUAIKA: " + PALVELUAIKA + "\n";
+	}
+}

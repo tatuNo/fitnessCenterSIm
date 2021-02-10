@@ -1,0 +1,27 @@
+package osat;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
+
+import eduni.distributions.Normal;
+import osat.AsiakkaanTyyppi.AsiakkaanSukupuoli;
+import osat.Trace.Level;
+
+public class Simulaattori {
+
+	public static void main(String[] args) {
+		
+//		Trace.setTraceLevel(Level.INFO);
+//		//Moottori m = new Moottori();
+//		m.setSimulointiaika(1440);
+//		m.aja();
+//		
+		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");  
+		   LocalDateTime now = LocalDateTime.now();  
+		   System.out.println(dtf.format(now));  
+
+	}
+}

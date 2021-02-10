@@ -1,0 +1,37 @@
+package view;
+
+import javafx.scene.canvas.Canvas;
+import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.paint.Color;
+
+public class Visualisointi {
+
+	private GraphicsContext gc;
+	private Canvas canvas;
+	private double i = 20;
+	private double j = 20;
+	
+	public Visualisointi(Canvas canvas) {
+		this.canvas = canvas;
+		
+		gc = this.canvas.getGraphicsContext2D();
+		tyhjennaNaytto();
+	}
+	
+
+	public void tyhjennaNaytto() {
+		gc.setFill(Color.YELLOW);
+		gc.fillRect(0, 0, this.canvas.getWidth(), this.canvas.getHeight());
+	}
+	
+	public void uusiAsiakas() {
+		gc.setFill(Color.RED);
+		gc.fillOval(i,j,0,0);
+		
+		
+		
+		i = (i + 12) % this.canvas.getWidth();
+		j = (j + 12) % this.canvas.getHeight();	
+	}
+	
+}

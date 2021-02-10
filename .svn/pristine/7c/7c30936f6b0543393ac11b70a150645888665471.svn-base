@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="450.0" prefWidth="600.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.SimuOverviewController">
+   <children>
+      <SplitPane dividerPositions="0.3494983277591973" prefHeight="450.0" prefWidth="600.0" stylesheets="@styles.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <items>
+          <AnchorPane stylesheets="@styles.css">
+               <children>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="36.0" stroke="TRANSPARENT" strokeType="INSIDE" width="206.0" />
+                  <Text layoutX="10.0" layoutY="63.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Simulointiaika" AnchorPane.leftAnchor="10.0" />
+                  <Text layoutX="12.0" layoutY="101.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Viive" AnchorPane.leftAnchor="10.0" />
+                  <Text layoutX="10.0" layoutY="389.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tulos:" AnchorPane.leftAnchor="10.0">
+                     <font>
+                        <Font name="System Bold Italic" size="12.0" />
+                     </font>
+                  </Text>
+                  <TextField fx:id="simulointiaika" layoutX="110.0" layoutY="49.0" prefHeight="0.0" prefWidth="74.0" promptText="0" AnchorPane.leftAnchor="110.0" />
+                  <Button layoutX="10.0" layoutY="213.0" mnemonicParsing="false" onAction="#handleSimuloi" prefHeight="54.0" prefWidth="155.0" text="SIMULOI" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="11.0" layoutY="332.0" mnemonicParsing="false" onAction="#handleHidasta" text="Hidasta" AnchorPane.leftAnchor="11.0" />
+                  <Button layoutX="107.0" layoutY="332.0" mnemonicParsing="false" onAction="#handleNopeuta" text="Nopeuta" AnchorPane.rightAnchor="5.799999999999983" />
+                  <Text fill="#6ab5ff" fontSmoothingType="LCD" layoutX="11.0" layoutY="26.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Simulaattori" AnchorPane.leftAnchor="11.0" AnchorPane.rightAnchor="55.451562499999994" AnchorPane.topAnchor="0.1015625">
+                     <font>
+                        <Font name="System Bold" size="24.0" />
+                     </font>
+                  </Text>
+                  <TextField fx:id="viive" layoutX="110.0" layoutY="87.0" prefHeight="0.0" prefWidth="74.0" promptText="0" AnchorPane.leftAnchor="110.0" />
+                  <TextField fx:id="tulos" layoutX="94.0" layoutY="372.0" prefHeight="0.0" prefWidth="74.0" promptText="0" AnchorPane.rightAnchor="6.799999999999983" />
+                  <Circle fill="#6ab5ff" layoutX="148.0" layoutY="297.0" radius="23.0" stroke="#6ab5ff" strokeType="INSIDE" AnchorPane.leftAnchor="125.0" />
+                  <Text fx:id="viiveTeksti" layoutX="130.0" layoutY="302.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" AnchorPane.leftAnchor="130.0" />
+                  <Text fx:id="viiveTeksti1" layoutX="35.0" layoutY="302.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Viive nyt:" textAlignment="CENTER" wrappingWidth="95.40943266013089" AnchorPane.leftAnchor="35.0" />
+                  <TextField fx:id="jakaumaXTeksti" layoutX="11.0" layoutY="167.0" prefHeight="0.0" prefWidth="74.0" promptText="0" />
+                  <TextField fx:id="jakaumaYTeksti" layoutX="110.0" layoutY="167.0" prefHeight="0.0" prefWidth="74.0" promptText="0" />
+                  <Text layoutX="10.0" layoutY="162.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Keskiarvo" />
+                  <Text layoutX="109.0" layoutY="162.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hajonta" />
+                  <Text layoutX="10.0" layoutY="135.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Asiakas generaattorin arvot:">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Text>
+                  <Button layoutX="26.0" layoutY="304.0" mnemonicParsing="false" onAction="#tallennaTulokset" prefHeight="26.0" prefWidth="122.0" text="Tallenna tulokset" AnchorPane.bottomAnchor="18.0" AnchorPane.leftAnchor="26.0" AnchorPane.rightAnchor="26.799999999999983" />
+               </children>
+            </AnchorPane>
+            <BorderPane fx:id="border" />
+        </items>
+      </SplitPane>
+   </children>
+</AnchorPane>

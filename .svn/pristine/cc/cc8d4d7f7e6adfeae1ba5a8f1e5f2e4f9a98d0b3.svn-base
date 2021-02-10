@@ -1,0 +1,105 @@
+package view;
+
+import java.io.IOException;
+import java.net.URL;
+import java.text.DecimalFormat;
+import java.util.ResourceBundle;
+
+import controller.Kontrolleri;
+import controller.KontrolleriIf;
+import javafx.animation.Interpolator;
+import javafx.animation.PathTransition;
+import javafx.animation.Timeline;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
+import javafx.scene.Group;
+import javafx.scene.Scene;
+import javafx.scene.canvas.Canvas;
+import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Text;
+import javafx.stage.Stage;
+import javafx.util.Duration;
+import javafx.scene.shape.*;
+import osat.Moottori;
+import osat.Trace;
+import osat.Trace.Level;
+
+public class SimuOverviewController implements Initializable{
+	@FXML
+	private TextField simulointiaika;
+	@FXML
+	private TextField viive;
+	@FXML
+	private TextField tulos;
+	@FXML
+	private Text viiveTeksti;
+	@FXML
+	private AnchorPane root;
+	@FXML
+	private Canvas canva;
+	@FXML
+	private AnchorPane animationPane;
+	@FXML
+	private BorderPane border;
+
+	private Main main;
+	
+	@Override
+	public void initialize(URL arg0, ResourceBundle rb) {	
+	
+	} 
+	
+	public SimuOverviewController() {
+		
+    }
+	
+	public void setMain(Main main) {
+		this.main = main;
+	}
+
+	
+	@FXML
+	public void handleSimuloi() {
+		main.simuloi();
+		viiveTeksti.setText(Long.toString(main.simuViive()));
+	}	
+	
+	@FXML
+	public void handleNopeuta() {
+		main.nopeuta();
+		viiveTeksti.setText(Long.toString(main.simuViive()));
+	}
+	
+	@FXML
+	public void handleHidasta() {
+		main.hidasta();
+		viiveTeksti.setText(Long.toString(main.simuViive()));
+	}
+	//Käyttöliittymän rajapintametodit (kutsutaan kontrollerista)
+	
+	
+	public BorderPane getBorderPane() {
+		
+		return border;
+	}
+	
+	public double simuAika() {
+		return Double.parseDouble(simulointiaika.getText());
+	}
+
+	public long simuViive(){
+		return Long.parseLong(viive.getText());
+	}
+		
+	public void simuLoppuaika(double aika){
+		 DecimalFormat formatter = new DecimalFormat("#0.00");
+		 this.tulos.setText(formatter.format(aika));
+	}
+}

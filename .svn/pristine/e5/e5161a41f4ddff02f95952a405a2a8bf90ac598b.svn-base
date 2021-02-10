@@ -1,0 +1,59 @@
+package view;
+
+import java.net.URL;
+import java.util.ResourceBundle;
+
+import javafx.application.Platform;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
+
+public class RootLayoutController implements Initializable{
+
+    // Reference to the main application
+    private Main main;
+    
+    public void setMain(Main main) {
+        this.main = main;
+    }
+    /**
+     * Opens an about dialog.
+     */
+    @FXML
+    private void handleAbout() {
+    	Alert alert = new Alert(AlertType.INFORMATION);
+    	alert.setTitle("Kuntokeskus Simulaattori");
+    	alert.setHeaderText("Tietoja");
+    	alert.setContentText("Tekij‰t: Nico J‰rvinen ja Tatu Nordstrˆm");
+
+    	alert.showAndWait();
+    }
+    
+    @FXML
+    private void handleOhjeet() {
+    	Alert alert = new Alert(AlertType.INFORMATION);
+    	alert.setTitle("Kuntokeskus Simulaattori");
+    	alert.setHeaderText("Ohjeet");
+    	alert.setHeight(600);
+    	alert.setContentText("Sininen laatikko n‰ytt‰‰ palvelupisteen jonon pituuden.\nPunainen ympyr‰ kuvaa palvelupistett‰ ja jonoa.\nMustat ympyr‰t ovat asiakkaita.\n\nSimulaation aloittamiseksi t‰ytyy asettaa simulointi aika minuuteissa, viive kuinka kauan jokaisen simulointitapahtuman v‰liss‰ kest‰‰ ja asiakasm‰‰r‰n keskiarvo ja hajonta.");
+
+    	alert.showAndWait();
+    }
+    
+    
+	@FXML
+	public void handleStatistiikka() {
+		main.showStatisticsView();
+	}
+	
+
+    @FXML
+    private void handleExit() {
+        System.exit(0);
+    }
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+		
+	}
+}

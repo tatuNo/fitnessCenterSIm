@@ -1,0 +1,35 @@
+package osat;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
+
+class TapahtumaTest {
+	
+	private static Tapahtuma t;
+	
+	@BeforeAll
+	static void beforeAll () {
+		t = new Tapahtuma(TapahtumanTyyppi.DEP1, 10);
+	}
+
+	
+	@Test
+	void testTyyppi() {
+		t.setTyyppi(TapahtumanTyyppi.ARR1);
+		assertEquals(TapahtumanTyyppi.ARR1, t.getTyyppi(),"Tyypin setter tai getter ei toimi");
+	}
+	
+	@Test
+	void testAika() {
+		t.setAika(30);
+		assertEquals(30,t.getAika(),"Ajan setter tai getter ei toimi");
+	}
+
+	@Test
+	void testCompareTo() {
+		Tapahtuma t2 = new Tapahtuma(TapahtumanTyyppi.DEP1, 20);
+		assertEquals(1, t.compareTo(t2), "Compare To ei toimi");
+	}
+}

@@ -1,0 +1,94 @@
+package osat;
+
+import osat.AsiakkaanTyyppi.AsiakkaanSukupuoli;
+
+public class Asiakas {
+	private double saapumisaika;
+	private double poistumisaika;
+	private int id;
+	private static int i = 1;
+	private static long sum = 0;
+	private AsiakkaanTyyppi tyyppi;
+	private AsiakkaanSukupuoli sukupuoli;
+	private static int palveltutAsiakkaat;
+	
+	private double lapimenoAloitus;
+	private double lapimenoLopetus;
+	
+	public Asiakas(AsiakkaanTyyppi tyyppi, AsiakkaanSukupuoli sukupuoli){
+	    this.id = i++;
+	    this.tyyppi = tyyppi;
+	    this.sukupuoli = sukupuoli;
+		saapumisaika = Kello.getInstance().getAika();
+		Trace.out(Trace.Level.INFO, "Uusi asiakas: " + id + " " + this.tyyppi + " " + this.sukupuoli + " ajassa: " +saapumisaika);
+	}
+	
+	public void setAlkuarvot() {
+		this.id = 0;
+		i = 1;
+		sum = 0;
+	}
+	
+	public Asiakas () {
+		
+	}
+	
+	public AsiakkaanTyyppi getAsiakkaanTyyppi () {
+		return this.tyyppi;
+	}
+	
+	public AsiakkaanSukupuoli getAsiakkaanSukupuoli () {
+		return this.sukupuoli;
+	}
+	
+	public double getPoistumisaika() {
+		return poistumisaika;
+	}
+
+	public void setPoistumisaika(double poistumisaika) {
+		this.poistumisaika = poistumisaika;
+	}
+
+	public double getSaapumisaika() {
+		return saapumisaika;
+	}
+
+	public void setSaapumisaika(double saapumisaika) {
+		this.saapumisaika = saapumisaika;
+	}
+	
+	public int getId () {
+		return id;
+	}
+	
+	public int getPalveltutAsiakkaat () {
+		return palveltutAsiakkaat;
+	}
+	
+	public double getLapimenoAloitus () {
+		return this.lapimenoAloitus;
+	}
+	
+	public double getLapimenoLopetus () {
+		return this.lapimenoLopetus;
+	}
+	
+	public void setLapimenoAloitus (double aloitus) {
+		this.lapimenoAloitus = aloitus;
+	}
+	
+	public void setLapimenoLopetus (double lopetus) {
+		this.lapimenoLopetus = lopetus;
+	}
+	
+	public void raportti(){
+		palveltutAsiakkaat++;
+		Trace.out(Trace.Level.INFO, "Asiakas "+id+ " saapui:" +saapumisaika);
+		Trace.out(Trace.Level.INFO,"Asiakas "+id+ " poistui:" +poistumisaika);
+		Trace.out(Trace.Level.INFO,"Asiakas "+id+ " viipyi:" +(poistumisaika-saapumisaika));
+		sum += (poistumisaika-saapumisaika);
+		double keskiarvo = sum/palveltutAsiakkaat;
+		System.out.println("Asiakkaiden läpimenoaikojen keskiarvo "+ keskiarvo);
+	}
+
+}

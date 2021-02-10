@@ -1,0 +1,334 @@
+package controller;
+
+import java.io.IOException;
+
+import javafx.application.Platform;
+import javafx.concurrent.Task;
+import javafx.fxml.FXMLLoader;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
+import javafx.scene.Parent;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
+import osat.Moottori;
+import osat.MoottoriIf;
+
+import view.*;
+
+public class Kontrolleri implements KontrolleriIf {
+
+	private AnimationOverviewController ani;
+	private MoottoriIf moottori;
+	private GuiIf gui;
+	private int id = 0;
+	
+	public Kontrolleri(GuiIf gui) {
+		this.gui = gui;
+	}
+
+	
+	// Moottorin ohjausta:
+		
+	@Override
+	public void kaynnistaSimulointi() {
+		moottori = new Moottori(this); // luodaan uusi moottorisäie jokaista simulointia varten
+		moottori.setSimulointiaika(gui.getAika());
+		moottori.setViive(gui.getViive());
+        
+		((Thread)moottori).start();
+		//((Thread)moottori).run();
+	}
+	
+	@Override
+	public long getViive() {
+		return moottori.getViive();
+	}
+	
+	
+	@Override
+	public void hidasta() { // hidastetaan moottorisäiettä
+		moottori.setViive((long)(moottori.getViive()*2));
+		System.out.println(moottori.getViive());
+	}
+
+	@Override
+	public void nopeuta() { // nopeutetaan moottorisäiettä
+		moottori.setViive((long)(moottori.getViive()*0.5));
+		System.out.println(moottori.getViive());
+	}
+	
+	@Override
+	public void setVastaanottoSize(int jonoSize) {
+		Platform.runLater(new Runnable() {
+			@Override
+			public void run() {
+				gui.setVastaanottoAsiakkaat(jonoSize);
+			}
+		});
+	}
+	@Override 
+	public void setRLSize(int jonoSize) {
+		Platform.runLater(new Runnable() {
+			@Override
+			public void run() {
+				gui.setRLAsiakkaat(jonoSize);
+			}
+		});
+	}
+	@Override 
+	public void setJuoksuSize(int jonoSize) {
+		Platform.runLater(new Runnable() {
+			@Override
+			public void run() {
+				gui.setJuoksuAsiakkaat(jonoSize);
+			}
+		});
+	}
+	@Override 
+	public void setKuntosaliSize(int jonoSize) {
+		Platform.runLater(new Runnable() {
+			@Override
+			public void run() {
+				gui.setKuntosaliAsiakkaat(jonoSize);
+			}
+		});
+	}
+	@Override 
+	public void setFysioSize(int jonoSize) {
+		Platform.runLater(new Runnable() {
+			@Override
+			public void run() {
+				gui.setFysioAsiakkaat(jonoSize);
+			}
+		});
+	}
+	@Override 
+	public void setRontgenSize(int jonoSize) {
+		Platform.runLater(new Runnable() {
+			@Override
+			public void run() {
+				gui.setRontgenAsiakkaat(jonoSize);
+			}
+		});
+	}
+	@Override
+	public void setHierontaSize(int jonoSize) {
+		Platform.runLater(new Runnable() {
+			@Override
+			public void run() {
+				gui.setHierontaAsiakkaat(jonoSize);
+			}
+		});
+	}
+	@Override 
+	public void setMPHSize(int jonoSize) {
+		Platform.runLater(new Runnable() {
+			@Override
+			public void run() {
+				gui.setMPHAsiakkaat(jonoSize);
+			}
+		});
+	}
+	@Override
+	public void setNPHSize(int jonoSize) {
+		Platform.runLater(new Runnable() {
+			@Override
+			public void run() {
+				gui.setNPHAsiakkaat(jonoSize);
+			}
+		});	
+	}
+	// Simulointitulosten välittämistä käyttöliittymään.
+	// Koska gui:n päivitykset tulevat moottorisäikeestä, ne pitää ohjata JavaFX-säikeeseen
+		
+	@Override
+	public void naytaLoppuaika(double aika) {
+		Platform.runLater(()->gui.setLoppuaika(aika)); 
+	}
+	 
+	@Override
+	public void AsiakasVtoPH() {
+		Platform.runLater(new Runnable() {
+			@Override
+			public void run() {
+				gui.vastaanottoToPH();
+			}
+		});
+	}
+	
+	@Override
+	public void AsiakasPHtoR() {
+		Platform.runLater(new Runnable() {
+			@Override
+			public void run() {
+				gui.PHtoR();
+			}
+		});
+	}
+	
+	@Override
+	public void AsiakasRtoPH() {
+		Platform.runLater(new Runnable() {
+			@Override
+			public void run() {
+				gui.RtoPH();
+			}
+		});
+	}
+	
+	@Override
+	public void AsiakasPHtoF() {
+		Platform.runLater(new Runnable() {
+			@Override
+			public void run() {
+				gui.PHtoF();
+			}
+		});
+	}
+	
+	@Override
+	public void AsiakasFtoPH() {
+		Platform.runLater(new Runnable() {
+			@Override
+			public void run() {
+				gui.FtoPH();
+			}
+		});
+	}
+	
+	@Override
+	public void AsiakasPHtoRL() {
+		Platform.runLater(new Runnable() {
+			@Override
+			public void run() {
+				gui.PHtoRL();
+			}
+		});
+	}
+	
+	@Override
+	public void AsiakasRLtoPH() {
+		Platform.runLater(new Runnable() {
+			@Override
+			public void run() {
+				gui.RLtoPH();
+			}
+		});
+	}
+	
+	@Override
+	public void AsiakasPHtoK() {
+		Platform.runLater(new Runnable() {
+			@Override
+			public void run() {
+				gui.PHtoK();
+			}
+		});
+	}
+	
+	@Override
+	public void AsiakasKtoPH() {
+		Platform.runLater(new Runnable() {
+			@Override
+			public void run() {
+				gui.KtoPH();
+			}
+		});
+	}	
+	
+	@Override
+	public void AsiakasPHtoJ() {
+		Platform.runLater(new Runnable() {
+			@Override
+			public void run() {
+				gui.PHtoJ();
+			}
+		});
+	}
+	
+	@Override
+	public void AsiakasJtoPH() {
+		Platform.runLater(new Runnable() {
+			@Override
+			public void run() {
+				gui.JtoPH();
+			}
+		});
+	}	
+	
+	@Override
+	public void AsiakasPHtoH() {
+		Platform.runLater(new Runnable() {
+			@Override
+			public void run() {
+				gui.PHtoH();
+			}
+		});
+	}
+	
+	@Override
+	public void AsiakasHtoPH() {
+		Platform.runLater(new Runnable() {
+			@Override
+			public void run() {
+				gui.HtoPH();
+			}
+		});
+	}	
+	
+	@Override
+	public void AsiakasPHtoS() {
+		Platform.runLater(new Runnable() {
+			@Override
+			public void run() {
+				gui.PHtoS();
+			}
+		});
+	}
+	
+	@Override
+	public void visualisoiAsiakas() {
+		Platform.runLater(new Runnable() {
+			@Override
+			public void run() {
+				gui.createAsiakas();
+			}
+		});
+	}
+
+	@Override
+	public void deleteAsiakkaat() {
+		Platform.runLater(new Runnable() {
+			@Override
+			public void run() {
+				gui.deleteAllAsiakkaat();
+			}
+		});
+	}
+	
+
+	@Override
+	public boolean asiakkaanSukupuoli() {
+		return moottori.asiakkaanSukupuoli();
+	}
+
+	@Override
+	public int getId() {
+		return id;
+	}
+	
+	@Override
+	public void setId(int id) {
+		Platform.runLater(() -> this.id = id );
+	}
+	
+	@Override
+	public int getJakaumaX() {
+		return gui.getJakaumaX();
+	}
+	
+	@Override
+	public int getJakaumaY() {
+		return gui.getJakaumaY();
+	}	
+}

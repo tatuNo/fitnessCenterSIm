@@ -1,0 +1,409 @@
+package view;
+	
+
+import java.io.IOException;
+import java.text.DecimalFormat;
+import java.util.List;
+
+import controller.*;
+import javafx.animation.PathTransition;
+import javafx.animation.Timeline;
+import javafx.application.Application;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+import javafx.util.Duration;
+import osat.ISuorituskykysuureetDAO;
+import osat.Suorituskykysuureet;
+import osat.Trace;
+import osat.Trace.Level;
+import javafx.scene.*;
+import javafx.scene.canvas.Canvas;
+import javafx.scene.control.SplitPane;
+import javafx.scene.control.TabPane;
+import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Circle;
+import javafx.scene.shape.CubicCurveTo;
+import javafx.scene.shape.HLineTo;
+import javafx.scene.shape.LineTo;
+import javafx.scene.shape.MoveTo;
+import javafx.scene.shape.Path;
+import javafx.scene.shape.VLineTo;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
+import javafx.scene.text.Text;
+
+
+
+public class Main extends Application implements GuiIf {
+
+	// Käyttöliittymäkomponentit:
+
+	private Stage primaryStage;
+    private BorderPane rootLayout;
+    private AnchorPane simuOverview;
+    private AnchorPane animationOverview;
+    private BorderPane simuBorder;
+    private TabPane statisticsView;
+    private AnimationOverviewController controller;
+    private Visualisointi naytto;
+    private KontrolleriIf kontrolleri;
+    private SimuOverviewController controlleri;
+    private StatisticsViewController statkontrolleri;
+    private int id = 0;
+    private ISuorituskykysuureetDAO dao;
+    private Suorituskykysuureet [] luetutsuureet;
+    
+    public Main() {
+	
+	}
+	
+	@Override
+	public void init() {
+		Trace.setTraceLevel(Level.INFO);
+		kontrolleri = new Kontrolleri(this);
+	}
+	
+	
+	@Override
+    public void start(Stage primaryStage) {
+		init();
+		this.primaryStage = primaryStage;
+        this.primaryStage.setTitle("Kuntosali Simulaattori");
+        this.primaryStage.setResizable(false);
+        // Set the application icon.
+        this.primaryStage.getIcons().add(new Image("file:/images/kuva.png"));
+    
+        initRootLayout();
+        
+        showSimuOverview();
+        
+        showAnimationOverview();
+        
+        //controller.moveCircle();
+	}	
+	
+	public void initRootLayout() {
+        try {
+            // Load root layout from fxml file.
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(Main.class.getResource("RootLayout.fxml"));
+            rootLayout = (BorderPane) loader.load();
+            
+            // Show thescene containing the root layout.
+            Scene scene = new Scene(rootLayout);
+            primaryStage.setScene(scene);
+            
+            // Give the controller access to the main app.
+            RootLayoutController controller = loader.getController();
+            controller.setMain(this);
+            
+            primaryStage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+	
+	
+	
+	public void showSimuOverview() {
+        try {
+            // Load person overview.
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(Main.class.getResource("SimuOverview.fxml"));
+            simuOverview = (AnchorPane) loader.load();
+            
+            // Set person overview into the center of root layout.
+            rootLayout.setCenter(simuOverview);
+            
+         // Give the controller access to the main app.
+            controlleri = loader.getController();
+            controlleri.setMain(this);
+            
+            simuBorder = controlleri.getBorderPane();
+            
+            
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+	
+	public void showAnimationOverview() {
+        try {
+            // Load person overview.
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(Main.class.getResource("AnimationOverview.fxml"));
+            animationOverview = (AnchorPane) loader.load();
+            
+            // Set person overview into the center of root layout.
+            BorderPane.setAlignment(animationOverview, Pos.CENTER);
+            BorderPane.setMargin(animationOverview, new Insets(12,12,12,12)); // optional
+            simuBorder.setCenter(animationOverview);
+            
+            // Give the controller access to the main app.
+            controller = loader.getController();
+            controller.setMain(this);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+	
+	public void showStatisticsView() {
+	      try {
+	    	// Load the fxml file and create a new stage for the popup.
+	          FXMLLoader loader = new FXMLLoader();
+	          loader.setLocation(Main.class.getResource("StatisticsView.fxml"));
+	          statisticsView = (TabPane) loader.load();
+	           
+	          Stage dialogStage = new Stage();
+	          dialogStage.setTitle("Statistiikka");
+	          dialogStage.initModality(Modality.WINDOW_MODAL);
+	          dialogStage.initOwner(primaryStage);
+	          Scene scene = new Scene(statisticsView);
+	          dialogStage.setScene(scene);
+
+	          statkontrolleri = loader.getController();
+	          
+	          dialogStage.show();
+	      
+	      } catch (IOException e) {
+	            e.printStackTrace();
+	        }
+	}
+	
+	public Stage getPrimaryStage() {
+		return primaryStage;
+	}
+	
+	public long simuViive() {
+		return kontrolleri.getViive();
+	}
+	
+	public void simuloi() {
+		kontrolleri.kaynnistaSimulointi();
+	}	
+	
+	public void nopeuta() {
+		kontrolleri.nopeuta();
+	}
+	
+	public void hidasta() {
+		kontrolleri.hidasta();
+	}
+	
+	public void setVastaanottoAsiakkaat (int size) {
+		controller.setVastaanotto(size);
+	}
+	public void setRontgenAsiakkaat(int size) {
+		controller.setRontgen(size);
+	}
+	public void setKuntosaliAsiakkaat(int size) {
+		controller.setKuntosali(size);
+	}
+	public void setRLAsiakkaat(int size) {
+		controller.setRL(size);
+	}
+	public void setJuoksuAsiakkaat(int size) {
+		controller.setJuoksu(size);
+	}
+	public void setHierontaAsiakkaat(int size) {
+		controller.setHieroja(size);
+	}
+	public void setFysioAsiakkaat(int size) {
+		controller.setFysio(size);
+	}
+	public void setNPHAsiakkaat(int size) {
+		controller.setNPH(size);
+	}
+	public void setMPHAsiakkaat(int size) {
+		controller.setMPH(size);
+	}
+	
+	// JavaFX-sovelluksen (käyttöliittymän) käynnistäminen
+	
+	public static void main(String[] args) {
+		launch(args);
+	}
+
+	@Override
+	public double getAika(){	
+		return controlleri.simuAika();
+	}
+	
+	@Override
+	public long getViive(){
+		return controlleri.simuViive();
+	}
+		
+	@Override
+	public void setLoppuaika(double aika){
+		 controlleri.simuLoppuaika(aika);
+	}
+
+	@Override
+	public void createAsiakas() {
+		id = getId();
+		controller.createNewAsiakas(id);
+	}
+	
+	@Override
+	public void deleteAllAsiakkaat() {
+		controller.deleteAllAsiakkaat();
+	}
+	
+	@Override
+	public Circle getAsiakas(int id) {
+		Circle temp = controller.getAsiakas(id);
+		return temp;
+	}
+	
+	@Override
+	public int getId() {
+		return kontrolleri.getId();
+	}
+	
+	@Override
+	public void vastaanottoToPH() {
+		if(kontrolleri.asiakkaanSukupuoli() == true) {
+			controller.moveToMPH(getId());
+		} else {
+			controller.moveToNPH(getId());
+		}
+	}
+	
+	@Override
+	public void PHtoR() {
+		if(kontrolleri.asiakkaanSukupuoli() == true) {
+			controller.moveMPHtoR(getId());
+		} else {
+			controller.moveNPHtoR(getId());
+		}
+	}
+	
+	@Override
+	public void RtoPH() {
+		if(kontrolleri.asiakkaanSukupuoli() == true) {
+			controller.moveRtoMPH(getId());
+		} else {
+			controller.moveRtoNPH(getId());
+		}
+	}
+	
+
+	@Override
+	public void PHtoF() {
+		if(kontrolleri.asiakkaanSukupuoli() == true) {
+			controller.moveMPHtoF(getId());
+		} else {
+			controller.moveNPHtoF(getId());
+		}
+	}
+	
+	@Override
+	public void FtoPH() {
+		if(kontrolleri.asiakkaanSukupuoli() == true) {
+			controller.moveFtoMPH(getId());
+		} else {
+			controller.moveFtoNPH(getId());
+		}
+	}
+
+
+	@Override
+	public void PHtoRL() {
+		if(kontrolleri.asiakkaanSukupuoli() == true) {
+			controller.moveMPHtoRL(getId());
+		} else {
+			controller.moveNPHtoRL(getId());
+		}
+	}
+	
+	@Override
+	public void RLtoPH() {
+		if(kontrolleri.asiakkaanSukupuoli() == true) {
+			controller.moveRLtoMPH(getId());
+		} else {
+			controller.moveRLtoNPH(getId());
+		}
+	}
+	
+	@Override
+	public void PHtoK() {
+		if(kontrolleri.asiakkaanSukupuoli() == true) {
+			controller.moveMPHtoK(getId());
+		} else {
+			controller.moveNPHtoK(getId());
+		}
+	}
+	
+	@Override
+	public void KtoPH() {
+		if(kontrolleri.asiakkaanSukupuoli() == true) {
+			controller.moveKtoMPH(getId());
+		} else {
+			controller.moveKtoNPH(getId());
+		}
+	}
+
+	@Override
+	public void PHtoJ() {
+		if(kontrolleri.asiakkaanSukupuoli() == true) {
+			controller.moveMPHtoJ(getId());
+		} else {
+			controller.moveNPHtoJ(getId());
+		}
+	}
+	
+	@Override
+	public void JtoPH() {
+		if(kontrolleri.asiakkaanSukupuoli() == true) {
+			controller.moveJtoMPH(getId());
+		} else {
+			controller.moveJtoNPH(getId());
+		}
+	}
+
+	@Override
+	public void PHtoH() {
+		if(kontrolleri.asiakkaanSukupuoli() == true) {
+			controller.moveMPHtoH(getId());
+		} else {
+			controller.moveNPHtoH(getId());
+		}
+	}
+	
+	@Override
+	public void HtoPH() {
+		if(kontrolleri.asiakkaanSukupuoli() == true) {
+			controller.moveHtoMPH(getId());
+		} else {
+			controller.moveHtoNPH(getId());
+		}
+	}
+	
+	@Override
+	public void PHtoS() {
+		if(kontrolleri.asiakkaanSukupuoli() == true) {
+			controller.moveMPHtoS(getId());
+		} else {
+			controller.moveNPHtoS(getId());
+		}
+	}
+	
+	
+	@Override
+	public Visualisointi getVisualisointi() {
+		// TODO Auto-generated method stub
+		return naytto;
+	}
+
+}

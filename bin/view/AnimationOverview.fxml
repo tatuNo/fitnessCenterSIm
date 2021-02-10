@@ -1,0 +1,346 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.HLineTo?>
+<?import javafx.scene.shape.MoveTo?>
+<?import javafx.scene.shape.Path?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.shape.VLineTo?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="background" prefHeight="450.0" prefWidth="250.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.AnimationOverviewController">
+   <children>
+      <Path fx:id="VtoNPH" fill="#2197ff00" layoutX="107.0" layoutY="53.0" stroke="TRANSPARENT" strokeType="INSIDE">
+         <elements>
+            <MoveTo />
+            <VLineTo y="210.0" />
+            <HLineTo x="-30.0" />
+         </elements>
+      </Path>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c5c0ad" height="50.0" layoutX="319.0" layoutY="1.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="125.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c5c0ad" height="104.0" layoutX="122.0" layoutY="1.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="25.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c5c0ad" height="104.0" layoutX="216.0" layoutY="2.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="56.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="26.0" layoutX="369.0" layoutY="17.0" stroke="BLACK" strokeType="INSIDE" width="25.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c5c0ad" height="65.0" layoutX="5.0" layoutY="207.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="62.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c5c0ad" height="61.0" layoutX="5.0" layoutY="272.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="62.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c5c0ad" height="75.0" layoutX="5.0" layoutY="333.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="105.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c5c0ad" height="65.0" layoutX="409.0" layoutY="266.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="62.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c5c0ad" height="80.0" layoutX="409.0" layoutY="331.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="62.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c5c0ad" height="118.0" layoutX="187.0" layoutY="220.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="139.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="26.0" layoutX="244.0" layoutY="279.0" stroke="BLACK" strokeType="INSIDE" width="25.0" />
+      <Text layoutX="208.0" layoutY="261.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Kuntosali">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Text>
+      <Text fx:id="kuntosaliTeksti" layoutX="253.0" layoutY="296.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="26.0" layoutX="24.0" layoutY="241.0" stroke="BLACK" strokeType="INSIDE" width="25.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="26.0" layoutX="24.0" layoutY="302.0" stroke="BLACK" strokeType="INSIDE" width="25.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="26.0" layoutX="45.0" layoutY="382.0" stroke="BLACK" strokeType="INSIDE" width="25.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="26.0" layoutX="427.0" layoutY="380.0" stroke="BLACK" strokeType="INSIDE" width="25.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="26.0" layoutX="427.0" layoutY="300.0" stroke="BLACK" strokeType="INSIDE" width="25.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="26.0" layoutX="233.0" layoutY="67.0" stroke="BLACK" strokeType="INSIDE" width="25.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="26.0" layoutX="149.0" layoutY="42.0" stroke="BLACK" strokeType="INSIDE" width="25.0" />
+      <Text layoutX="6.0" layoutY="226.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Pukuhuone N">
+         <font>
+            <Font name="System Bold" size="9.0" />
+         </font>
+      </Text>
+      <Text layoutX="6.0" layoutY="292.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Pukuhuone M">
+         <font>
+            <Font name="System Bold" size="9.0" />
+         </font>
+      </Text>
+      <Text layoutX="10.0" layoutY="363.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ryhmäliikunta">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Text>
+      <Text fx:id="NPHTeksti" layoutX="33.0" layoutY="259.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
+      <Text fx:id="MPHTeksti" layoutX="33.0" layoutY="320.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
+      <Text fx:id="RLTeksti" layoutX="54.0" layoutY="400.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
+      <Text fx:id="fysioTeksti" layoutX="436.0" layoutY="398.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
+      <Text fx:id="hierojaTeksti" layoutX="436.0" layoutY="318.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
+      <Text fx:id="rontgenTeksti" layoutX="242.0" layoutY="85.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
+      <Text fx:id="vastaanottoTeksti" layoutX="158.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
+      <Text layoutX="416.0" layoutY="285.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hieroja">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Text>
+      <Text layoutX="411.0" layoutY="349.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fysioterapeutti">
+         <font>
+            <Font name="System Bold" size="8.0" />
+         </font>
+      </Text>
+      <Text layoutX="220.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Röntgen">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Text>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c5c0ad" height="26.0" layoutX="142.0" layoutY="79.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="46.0" />
+      <Text layoutX="124.0" layoutY="97.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Vastaanotto">
+         <font>
+            <Font name="System Bold" size="10.0" />
+         </font>
+      </Text>
+      <Text layoutX="325.0" layoutY="12.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Juoksumatot" textAlignment="CENTER" wrappingWidth="115.3499755859375">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Text>
+      <Text fx:id="juoksuTeksti" layoutX="378.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
+      <Path fx:id="NPHtoF" fill="TRANSPARENT" layoutX="69.0" layoutY="266.0" stroke="TRANSPARENT" strokeType="INSIDE">
+          <elements>
+              <MoveTo />
+            <HLineTo x="100.0" />
+            <VLineTo y="140.0" />
+            <HLineTo x="340.0" />
+          </elements>
+      </Path>
+      <Path fx:id="VtoMPH" fill="TRANSPARENT" layoutX="110.0" layoutY="63.0" stroke="TRANSPARENT" strokeType="INSIDE">
+         <elements>
+            <MoveTo />
+            <VLineTo y="260.0" />
+            <HLineTo x="-30.0" />
+         </elements>
+      </Path>
+      <Path fx:id="NPHtoR" fill="TRANSPARENT" layoutX="68.0" layoutY="268.0" stroke="TRANSPARENT" strokeType="INSIDE">
+         <elements>
+            <MoveTo />
+            <HLineTo x="80.0" />
+            <VLineTo y="-100.0" />
+            <HLineTo x="180.0" />
+            <VLineTo y="-160.0" />
+         </elements>
+      </Path>
+      <Path fx:id="MPHtoR" fill="TRANSPARENT" layoutX="66.0" layoutY="327.0" stroke="TRANSPARENT" strokeType="INSIDE">
+         <elements>
+            <MoveTo />
+            <HLineTo x="80.0" />
+            <VLineTo y="-200.0" />
+            <HLineTo x="180.0" />
+            <VLineTo y="-220.0" />
+         </elements>
+      </Path>
+      <Path fx:id="RtoMPH" fill="TRANSPARENT" layoutX="256.0" layoutY="108.0" stroke="TRANSPARENT" strokeType="INSIDE">
+         <elements>
+            <MoveTo />
+            <VLineTo y="10.0" />
+            <HLineTo x="-80.0" />
+            <VLineTo y="220.0" />
+            <HLineTo x="-180.0" />
+         </elements>
+      </Path>
+      <Path fx:id="RtoNPH" fill="TRANSPARENT" layoutX="266.0" layoutY="118.0" stroke="TRANSPARENT" strokeType="INSIDE">
+         <elements>
+            <MoveTo />
+            <VLineTo y="10.0" />
+            <HLineTo x="-80.0" />
+            <VLineTo y="150.0" />
+            <HLineTo x="-180.0" />
+         </elements>
+      </Path>
+      <Path fx:id="MPHtoF" fill="TRANSPARENT" layoutX="76.0" layoutY="334.0" stroke="TRANSPARENT" strokeType="INSIDE">
+         <elements>
+            <MoveTo />
+            <HLineTo x="100.0" />
+            <VLineTo y="70.0" />
+            <HLineTo x="340.0" />
+         </elements>
+      </Path>
+      <Path fx:id="FtoNPH" fill="TRANSPARENT" layoutX="412.0" layoutY="404.0" stroke="TRANSPARENT" strokeType="INSIDE">
+         <elements>
+            <MoveTo />
+            <HLineTo x="-240.0" />
+            <VLineTo y="-140.0" />
+            <HLineTo x="-340.0" />
+         </elements>
+      </Path>
+      <Path fx:id="FtoMPH" fill="TRANSPARENT" layoutX="422.0" layoutY="414.0" stroke="TRANSPARENT" strokeType="INSIDE">
+         <elements>
+            <MoveTo />
+            <HLineTo x="-240.0" />
+            <VLineTo y="-90.0" />
+            <HLineTo x="-340.0" />
+         </elements>
+      </Path>
+      <Path fx:id="NPHtoRL" fill="TRANSPARENT" layoutX="75.0" layoutY="266.0" stroke="TRANSPARENT" strokeType="INSIDE">
+          <elements>
+              <MoveTo />
+            <HLineTo x="60.0" />
+            <VLineTo y="140.0" />
+          </elements>
+      </Path>
+      <Path fx:id="MPHtoRL" fill="TRANSPARENT" layoutX="75.0" layoutY="334.0" stroke="TRANSPARENT" strokeType="INSIDE">
+         <elements>
+            <MoveTo />
+            <HLineTo x="60.0" />
+            <VLineTo y="60.0" />
+         </elements>
+      </Path>
+      <Path fx:id="RLtoMPH" fill="TRANSPARENT" layoutX="120.0" layoutY="394.0" stroke="TRANSPARENT" strokeType="INSIDE">
+         <elements>
+            <MoveTo />
+            <VLineTo y="-60.0" />
+            <HLineTo x="-50.0" />
+         </elements>
+      </Path>
+      <Path fx:id="RLtoNPH" fill="TRANSPARENT" layoutX="130.0" layoutY="404.0" stroke="TRANSPARENT" strokeType="INSIDE">
+         <elements>
+            <MoveTo />
+            <VLineTo y="-140.0" />
+            <HLineTo x="-50.0" />
+         </elements>
+      </Path>
+      <Path fx:id="NPHtoK" fill="TRANSPARENT" layoutX="66.0" layoutY="263.0" stroke="TRANSPARENT" strokeType="INSIDE">
+          <elements>
+              <MoveTo />
+            <HLineTo x="100.0" />
+            <VLineTo y="-60.0" />
+            <HLineTo x="270.0" />
+            <VLineTo y="100.0" />
+            <HLineTo x="200.0" />
+          </elements>
+      </Path>
+      <Path fx:id="MPHtoK" fill="TRANSPARENT" layoutX="76.0" layoutY="320.0" stroke="TRANSPARENT" strokeType="INSIDE">
+         <elements>
+            <MoveTo />
+            <HLineTo x="100.0" />
+            <VLineTo y="-120.0" />
+            <HLineTo x="270.0" />
+            <VLineTo y="40.0" />
+            <HLineTo x="200.0" />
+         </elements>
+      </Path>
+      <Path fx:id="KtoNPH" fill="TRANSPARENT" layoutX="260.0" layoutY="360.0" stroke="TRANSPARENT" strokeType="INSIDE">
+         <elements>
+            <MoveTo />
+            <HLineTo x="80.0" />
+            <VLineTo y="-160.0" />
+            <HLineTo x="-130.0" />
+            <VLineTo y="-30.0" />
+            <HLineTo x="-180.0" />
+         </elements>
+      </Path>
+      <Path fx:id="KtoMPH" fill="TRANSPARENT" layoutX="260.0" layoutY="360.0" stroke="TRANSPARENT" strokeType="INSIDE">
+         <elements>
+            <MoveTo />
+            <HLineTo x="80.0" />
+            <VLineTo y="-160.0" />
+            <HLineTo x="-130.0" />
+            <VLineTo y="-100.0" />
+            <HLineTo x="-180.0" />
+         </elements>
+      </Path>
+      <Path fx:id="NPHtoJ" fill="#1f93ff00" layoutX="75.0" layoutY="270.0" stroke="TRANSPARENT" strokeType="INSIDE">
+          <elements>
+              <MoveTo />
+            <HLineTo x="60.0" />
+            <VLineTo y="-100.0" />
+            <HLineTo x="300.0" />
+            <VLineTo y="-210.0" />
+          </elements>
+      </Path>
+      <Path fx:id="MPHtoJ" fill="#1f93ff00" layoutX="75.0" layoutY="330.0" stroke="TRANSPARENT" strokeType="INSIDE">
+         <elements>
+            <MoveTo />
+            <HLineTo x="60.0" />
+            <VLineTo y="-150.0" />
+            <HLineTo x="300.0" />
+            <VLineTo y="-275.0" />
+         </elements>
+      </Path>
+      <Path fx:id="JtoNPH" fill="#1f93ff00" layoutX="371.0" layoutY="58.0" stroke="TRANSPARENT" strokeType="INSIDE">
+         <elements>
+            <MoveTo />
+            <VLineTo y="120.0" />
+            <HLineTo x="-210.0" />
+            <VLineTo y="210.0" />
+            <HLineTo x="-295.0" />
+         </elements>
+      </Path>
+      <Path fx:id="JtoMPH" fill="#1f93ff00" layoutX="370.0" layoutY="68.0" stroke="TRANSPARENT" strokeType="INSIDE">
+         <elements>
+            <MoveTo />
+            <VLineTo y="120.0" />
+            <HLineTo x="-210.0" />
+            <VLineTo y="265.0" />
+            <HLineTo x="-295.0" />
+         </elements>
+      </Path>
+      <Path fx:id="MPHtoH" fill="#1f93ff00" layoutX="70.0" layoutY="307.0" stroke="TRANSPARENT" strokeType="INSIDE">
+          <elements>
+              <MoveTo />
+            <HLineTo x="110.0" />
+            <VLineTo y="100.0" />
+            <HLineTo x="265.0" />
+            <VLineTo y="-10.0" />
+            <HLineTo x="330.0" />
+          </elements>
+      </Path>
+      <Path fx:id="NPHtoH" fill="#1f93ff00" layoutX="70.0" layoutY="250.0" stroke="TRANSPARENT" strokeType="INSIDE">
+         <elements>
+            <MoveTo />
+            <HLineTo x="110.0" />
+            <VLineTo y="150.0" />
+            <HLineTo x="265.0" />
+            <VLineTo y="40.0" />
+            <HLineTo x="330.0" />
+         </elements>
+      </Path>
+      <Path fx:id="HtoMPH" fill="#1f93ff00" layoutX="404.0" layoutY="288.0" stroke="TRANSPARENT" strokeType="INSIDE">
+         <elements>
+            <MoveTo />
+            <HLineTo x="-70.0" />
+            <VLineTo y="90.0" />
+            <HLineTo x="-240.0" />
+            <VLineTo y="25.0" />
+            <HLineTo x="-335.0" />
+         </elements>
+      </Path>
+      <Path fx:id="HtoNPH" fill="#1f93ff00" layoutX="405.0" layoutY="285.0" stroke="TRANSPARENT" strokeType="INSIDE">
+         <elements>
+            <MoveTo />
+            <HLineTo x="-70.0" />
+            <VLineTo y="90.0" />
+            <HLineTo x="-240.0" />
+            <VLineTo y="-30.0" />
+            <HLineTo x="-335.0" />
+         </elements>
+      </Path>
+      <Path fx:id="MPHtoS" fill="#1f93ff00" layoutX="80.0" layoutY="312.0" stroke="TRANSPARENT" strokeType="INSIDE">
+          <elements>
+              <MoveTo />
+            <HLineTo x="30.0" />
+            <VLineTo y="-290.0" />
+            <HLineTo x="-60.0" />
+          </elements>
+      </Path>
+      <Path fx:id="NPHtoS" fill="#1f93ff00" layoutX="80.0" layoutY="252.0" stroke="TRANSPARENT" strokeType="INSIDE">
+         <elements>
+            <MoveTo />
+            <HLineTo x="30.0" />
+            <VLineTo y="-230.0" />
+            <HLineTo x="-60.0" />
+         </elements>
+      </Path>
+      <Text layoutX="46.0" layoutY="21.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sisäänkäynti" wrappingWidth="79.35272216796875">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Text>
+      <Circle fill="#ff1f1f" layoutX="85.0" layoutY="250.0" radius="15.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fill="#ff1f1f" layoutX="85.0" layoutY="310.0" radius="15.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fill="#ff1f1f" layoutX="128.0" layoutY="380.0" radius="15.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fill="#ff1f1f" layoutX="255.0" layoutY="355.0" radius="15.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fill="#ff1f1f" layoutX="394.0" layoutY="378.0" radius="15.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fill="#ff1f1f" layoutX="394.0" layoutY="313.0" radius="15.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fill="#ff1f1f" layoutX="382.0" layoutY="63.0" radius="15.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fill="#ff1f1f" layoutX="20.0" layoutY="20.0" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fill="#ff1f1f" layoutX="248.0" layoutY="118.0" radius="15.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fill="#ff1f1f" layoutX="105.0" layoutY="55.0" radius="15.0" stroke="BLACK" strokeType="INSIDE" />
+   </children>
+</AnchorPane>

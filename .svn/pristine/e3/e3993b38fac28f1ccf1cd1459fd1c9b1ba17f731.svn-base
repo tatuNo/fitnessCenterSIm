@@ -1,0 +1,20 @@
+package osat;
+
+/**
+ * Rajapinta, joka määrittelee SuorituskykySuureetAccessObjectin metodit.
+ * 
+ * @author Tatu Nordström
+ *
+ */
+public interface ISuorituskykysuureetDAO {
+	/**
+	 * @param suureet
+	 * @return
+	 */
+	public boolean luoSuorituskykysuurre(Suorituskykysuureet suureet);
+	/**
+	 * @param palvelupiste
+	 * @return
+	 */
+	public Suorituskykysuureet [] lueSuorituskykysuurreet(String palvelupiste);
+}

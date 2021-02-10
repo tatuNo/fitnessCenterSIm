@@ -1,0 +1,586 @@
+package view;
+
+
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.ResourceBundle;
+
+import javafx.animation.PathTransition;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.canvas.Canvas;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Circle;
+import javafx.scene.shape.Path;
+import javafx.scene.text.Text;
+import javafx.util.Duration;
+
+public class AnimationOverviewController implements Initializable{
+    
+	private Main main;
+	
+	private PathTransition pt;
+	
+	private List<Circle> myCircles = new ArrayList<Circle>();
+	
+	@FXML
+	private Circle circle;
+	@FXML
+	private Path VtoNPH;
+	@FXML
+	private Path VtoMPH;
+	@FXML
+	private Path NPHtoR;
+	@FXML
+	private Path MPHtoR;
+	@FXML
+	private Path RtoNPH;
+	@FXML
+	private Path RtoMPH;
+	@FXML
+	private Path NPHtoF;
+	@FXML
+	private Path MPHtoF;
+	@FXML
+	private Path FtoNPH;
+	@FXML
+	private Path FtoMPH;
+	@FXML
+	private Path NPHtoRL;
+	@FXML
+	private Path MPHtoRL;
+	@FXML
+	private Path RLtoNPH;
+	@FXML
+	private Path RLtoMPH;
+	@FXML
+	private Path NPHtoK;
+	@FXML
+	private Path MPHtoK;
+	@FXML
+	private Path KtoNPH;
+	@FXML
+	private Path KtoMPH;
+	@FXML
+	private Path NPHtoJ;
+	@FXML
+	private Path MPHtoJ;
+	@FXML
+	private Path JtoNPH;
+	@FXML
+	private Path JtoMPH;
+	@FXML
+	private Path NPHtoH;
+	@FXML
+	private Path MPHtoH;
+	@FXML
+	private Path HtoNPH;
+	@FXML
+	private Path HtoMPH;
+	@FXML
+	private Path NPHtoS;
+	@FXML
+	private Path MPHtoS;
+	@FXML
+	private AnchorPane background;
+	@FXML
+	private Canvas canva;
+	@FXML
+	private Text vastaanottoTeksti;
+	@FXML
+	private Text rontgenTeksti;
+	@FXML
+	private Text NPHTeksti;
+	@FXML
+	private Text MPHTeksti;
+	@FXML
+	private Text RLTeksti;
+	@FXML
+	private Text kuntosaliTeksti;
+	@FXML
+	private Text juoksuTeksti;
+	@FXML
+	private Text hierojaTeksti;
+	@FXML
+	private Text fysioTeksti;
+	
+	public AnimationOverviewController() {
+    	
+    }
+    
+    public void setMain(Main main) {
+        this.main = main;    
+    }
+   
+    public void moveToNPH(int id) {
+    	pt = new PathTransition();
+    	if(main.getViive() == 1) {
+    		pt.setDuration(Duration.millis(0.5));
+    	} else {
+    		pt.setDuration(Duration.millis(main.getViive()));
+    	}
+    	pt.setNode(myCircles.get(main.getId() - 1));
+    	pt.setPath(VtoNPH);
+    	pt.setOrientation(PathTransition.OrientationType.ORTHOGONAL_TO_TANGENT);
+    	pt.setCycleCount(1);
+    	pt.setAutoReverse(false);
+    	pt.play();
+    }
+    
+    public void moveToMPH(int id) {
+    	pt = new PathTransition();
+    	if(main.getViive() == 1) {
+    		pt.setDuration(Duration.millis(0.5));
+    	} else {
+    		pt.setDuration(Duration.millis(main.getViive()));
+    	}
+    	pt.setNode(myCircles.get(main.getId() - 1));
+    	pt.setPath(VtoMPH);
+    	pt.setOrientation(PathTransition.OrientationType.ORTHOGONAL_TO_TANGENT);
+    	pt.setCycleCount(1);
+    	pt.setAutoReverse(false);
+    	pt.play();
+    }
+
+
+    public void moveNPHtoR(int id) {
+    	pt = new PathTransition();
+    	if(main.getViive() == 1) {
+    		pt.setDuration(Duration.millis(0.5));
+    	} else {
+    		pt.setDuration(Duration.millis(main.getViive()));
+    	}
+    	pt.setNode(myCircles.get(main.getId() - 1));
+    	pt.setPath(NPHtoR);
+    	pt.setOrientation(PathTransition.OrientationType.ORTHOGONAL_TO_TANGENT);
+    	pt.setCycleCount(1);
+    	pt.setAutoReverse(false);
+    	pt.play();
+    }
+    
+    public void moveMPHtoR(int id) {
+    	pt = new PathTransition();
+    	if(main.getViive() == 1) {
+    		pt.setDuration(Duration.millis(0.5));
+    	} else {
+    		pt.setDuration(Duration.millis(main.getViive()));
+    	}
+    	pt.setNode(myCircles.get(main.getId()- 1));
+    	pt.setPath(MPHtoR);
+    	pt.setOrientation(PathTransition.OrientationType.ORTHOGONAL_TO_TANGENT);
+    	pt.setCycleCount(1);
+    	pt.setAutoReverse(false);
+    	pt.play();
+    }
+    
+    public void moveRtoNPH(int id) {
+    	pt = new PathTransition();
+    	if(main.getViive() == 1) {
+    		pt.setDuration(Duration.millis(0.5));
+    	} else {
+    		pt.setDuration(Duration.millis(main.getViive()));
+    	}
+    	pt.setNode(myCircles.get(main.getId()- 1));
+    	pt.setPath(RtoNPH);
+    	pt.setOrientation(PathTransition.OrientationType.ORTHOGONAL_TO_TANGENT);
+    	pt.setCycleCount(1);
+    	pt.setAutoReverse(false);
+    	pt.play();
+    }
+    
+    public void moveRtoMPH(int id) {
+    	pt = new PathTransition();
+    	if(main.getViive() == 1) {
+    		pt.setDuration(Duration.millis(0.5));
+    	} else {
+    		pt.setDuration(Duration.millis(main.getViive()));
+    	}
+    	pt.setNode(myCircles.get(main.getId() - 1));
+    	pt.setPath(RtoMPH);
+    	pt.setOrientation(PathTransition.OrientationType.ORTHOGONAL_TO_TANGENT);
+    	pt.setCycleCount(1);
+    	pt.setAutoReverse(false);
+    	pt.play();
+    }
+
+    public void moveNPHtoF(int id) {
+    	pt = new PathTransition();
+    	if(main.getViive() == 1) {
+    		pt.setDuration(Duration.millis(0.5));
+    	} else {
+    		pt.setDuration(Duration.millis(main.getViive()));
+    	}
+    	pt.setNode(myCircles.get(main.getId() - 1 ));
+    	pt.setPath(NPHtoF);
+    	pt.setOrientation(PathTransition.OrientationType.ORTHOGONAL_TO_TANGENT);
+    	pt.setCycleCount(1);
+    	pt.setAutoReverse(false);
+    	pt.play();
+    }
+    
+    public void moveMPHtoF(int id) {
+    	pt = new PathTransition();
+    	if(main.getViive() == 1) {
+    		pt.setDuration(Duration.millis(0.5));
+    	} else {
+    		pt.setDuration(Duration.millis(main.getViive()));
+    	}
+    	pt.setNode(myCircles.get(main.getId() - 1));
+    	pt.setPath(MPHtoF);
+    	pt.setOrientation(PathTransition.OrientationType.ORTHOGONAL_TO_TANGENT);
+    	pt.setCycleCount(1);
+    	pt.setAutoReverse(false);
+    	pt.play();
+    }
+    
+    public void moveFtoNPH(int id) {
+    	pt = new PathTransition();
+    	if(main.getViive() == 1) {
+    		pt.setDuration(Duration.millis(0.5));
+    	} else {
+    		pt.setDuration(Duration.millis(main.getViive()));
+    	}
+    	pt.setNode(myCircles.get(main.getId() - 1));
+    	pt.setPath(FtoNPH);
+    	pt.setOrientation(PathTransition.OrientationType.ORTHOGONAL_TO_TANGENT);
+    	pt.setCycleCount(1);
+    	pt.setAutoReverse(false);
+    	pt.play();
+    }
+    
+    public void moveFtoMPH(int id) {
+    	pt = new PathTransition();
+    	if(main.getViive() == 1) {
+    		pt.setDuration(Duration.millis(0.5));
+    	} else {
+    		pt.setDuration(Duration.millis(main.getViive()));
+    	}
+    	pt.setNode(myCircles.get(main.getId() - 1));
+    	pt.setPath(FtoMPH);
+    	pt.setOrientation(PathTransition.OrientationType.ORTHOGONAL_TO_TANGENT);
+    	pt.setCycleCount(1);
+    	pt.setAutoReverse(false);
+    	pt.play();
+    }
+
+    public void moveNPHtoRL(int id) {
+    	pt = new PathTransition();
+    	if(main.getViive() == 1) {
+    		pt.setDuration(Duration.millis(0.5));
+    	} else {
+    		pt.setDuration(Duration.millis(main.getViive()));
+    	}
+    	pt.setNode(myCircles.get(main.getId() - 1));
+    	pt.setPath(NPHtoRL);
+    	pt.setOrientation(PathTransition.OrientationType.ORTHOGONAL_TO_TANGENT);
+    	pt.setCycleCount(1);
+    	pt.setAutoReverse(false);
+    	pt.play();
+    }
+    
+    public void moveMPHtoRL(int id) {
+    	pt = new PathTransition();
+    	if(main.getViive() == 1) {
+    		pt.setDuration(Duration.millis(0.5));
+    	} else {
+    		pt.setDuration(Duration.millis(main.getViive()));
+    	}
+    	pt.setNode(myCircles.get(main.getId()- 1));
+    	pt.setPath(MPHtoRL);
+    	pt.setOrientation(PathTransition.OrientationType.ORTHOGONAL_TO_TANGENT);
+    	pt.setCycleCount(1);
+    	pt.setAutoReverse(false);
+    	pt.play();
+    }
+    
+    public void moveRLtoNPH(int id) {
+    	pt = new PathTransition();
+    	if(main.getViive() == 1) {
+    		pt.setDuration(Duration.millis(0.5));
+    	} else {
+    		pt.setDuration(Duration.millis(main.getViive()));
+    	}
+    	pt.setNode(myCircles.get(main.getId()- 1));
+    	pt.setPath(RLtoNPH);
+    	pt.setOrientation(PathTransition.OrientationType.ORTHOGONAL_TO_TANGENT);
+    	pt.setCycleCount(1);
+    	pt.setAutoReverse(false);
+    	pt.play();
+    }
+    
+    public void moveRLtoMPH(int id) {
+    	pt = new PathTransition();
+    	if(main.getViive() == 1) {
+    		pt.setDuration(Duration.millis(0.5));
+    	} else {
+    		pt.setDuration(Duration.millis(main.getViive()));
+    	}
+    	pt.setNode(myCircles.get(main.getId()- 1));
+    	pt.setPath(RLtoMPH);
+    	pt.setOrientation(PathTransition.OrientationType.ORTHOGONAL_TO_TANGENT);
+    	pt.setCycleCount(1);
+    	pt.setAutoReverse(false);
+    	pt.play();
+    }
+    
+    public void moveNPHtoK(int id) {
+    	pt = new PathTransition();
+    	if(main.getViive() == 1) {
+    		pt.setDuration(Duration.millis(0.5));
+    	} else {
+    		pt.setDuration(Duration.millis(main.getViive()));
+    	}
+    	pt.setNode(myCircles.get(main.getId()- 1));
+    	pt.setPath(NPHtoK);
+    	pt.setOrientation(PathTransition.OrientationType.ORTHOGONAL_TO_TANGENT);
+    	pt.setCycleCount(1);
+    	pt.setAutoReverse(false);
+    	pt.play();
+    }
+    
+    public void moveMPHtoK(int id) {
+    	pt = new PathTransition();
+    	if(main.getViive() == 1) {
+    		pt.setDuration(Duration.millis(0.5));
+    	} else {
+    		pt.setDuration(Duration.millis(main.getViive()));
+    	}
+    	pt.setNode(myCircles.get(main.getId()- 1));
+    	pt.setPath(MPHtoK);
+    	pt.setOrientation(PathTransition.OrientationType.ORTHOGONAL_TO_TANGENT);
+    	pt.setCycleCount(1);
+    	pt.setAutoReverse(false);
+    	pt.play();
+    }
+    
+    public void moveKtoNPH(int id) {
+    	pt = new PathTransition();
+    	if(main.getViive() == 1) {
+    		pt.setDuration(Duration.millis(0.5));
+    	} else {
+    		pt.setDuration(Duration.millis(main.getViive()));
+    	}
+    	pt.setNode(myCircles.get(main.getId()- 1));
+    	pt.setPath(KtoNPH);
+    	pt.setOrientation(PathTransition.OrientationType.ORTHOGONAL_TO_TANGENT);
+    	pt.setCycleCount(1);
+    	pt.setAutoReverse(false);
+    	pt.play();
+    }
+    
+    public void moveKtoMPH(int id) {
+    	pt = new PathTransition();
+    	if(main.getViive() == 1) {
+    		pt.setDuration(Duration.millis(0.5));
+    	} else {
+    		pt.setDuration(Duration.millis(main.getViive()));
+    	}
+    	pt.setNode(myCircles.get(main.getId()- 1));
+    	pt.setPath(KtoMPH);
+    	pt.setOrientation(PathTransition.OrientationType.ORTHOGONAL_TO_TANGENT);
+    	pt.setCycleCount(1);
+    	pt.setAutoReverse(false);
+    	pt.play();
+    }
+    
+    public void moveNPHtoJ(int id) {
+    	pt = new PathTransition();
+    	if(main.getViive() == 1) {
+    		pt.setDuration(Duration.millis(0.5));
+    	} else {
+    		pt.setDuration(Duration.millis(main.getViive()));
+    	}
+    	pt.setNode(myCircles.get(main.getId()- 1));
+    	pt.setPath(NPHtoJ);
+    	pt.setOrientation(PathTransition.OrientationType.ORTHOGONAL_TO_TANGENT);
+    	pt.setCycleCount(1);
+    	pt.setAutoReverse(false);
+    	pt.play();
+    }
+    
+    public void moveMPHtoJ(int id) {
+    	pt = new PathTransition();
+    	if(main.getViive() == 1) {
+    		pt.setDuration(Duration.millis(0.5));
+    	} else {
+    		pt.setDuration(Duration.millis(main.getViive()));
+    	}
+    	pt.setNode(myCircles.get(main.getId()- 1));
+    	pt.setPath(MPHtoJ);
+    	pt.setOrientation(PathTransition.OrientationType.ORTHOGONAL_TO_TANGENT);
+    	pt.setCycleCount(1);
+    	pt.setAutoReverse(false);
+    	pt.play();
+    }
+    
+    public void moveJtoNPH(int id) {
+    	pt = new PathTransition();
+    	if(main.getViive() == 1) {
+    		pt.setDuration(Duration.millis(0.5));
+    	} else {
+    		pt.setDuration(Duration.millis(main.getViive()));
+    	}
+    	pt.setNode(myCircles.get(main.getId()- 1));
+    	pt.setPath(JtoNPH);
+    	pt.setOrientation(PathTransition.OrientationType.ORTHOGONAL_TO_TANGENT);
+    	pt.setCycleCount(1);
+    	pt.setAutoReverse(false);
+    	pt.playFromStart();
+    }
+    
+    public void moveJtoMPH(int id) {
+    	pt = new PathTransition();
+    	if(main.getViive() == 1) {
+    		pt.setDuration(Duration.millis(0.5));
+    	} else {
+    		pt.setDuration(Duration.millis(main.getViive()));
+    	}
+    	pt.setNode(myCircles.get(main.getId()- 1));
+    	pt.setPath(JtoMPH);
+    	pt.setOrientation(PathTransition.OrientationType.ORTHOGONAL_TO_TANGENT);
+    	pt.setCycleCount(1);
+    	pt.setAutoReverse(false);
+    	pt.play();
+    }
+    
+    public void moveNPHtoH(int id) {
+    	pt = new PathTransition();
+    	if(main.getViive() == 1) {
+    		pt.setDuration(Duration.millis(0.5));
+    	} else {
+    		pt.setDuration(Duration.millis(main.getViive()));
+    	}
+    	pt.setNode(myCircles.get(main.getId()- 1));
+    	pt.setPath(NPHtoH);
+    	pt.setOrientation(PathTransition.OrientationType.ORTHOGONAL_TO_TANGENT);
+    	pt.setCycleCount(1);
+    	pt.setAutoReverse(false);
+    	pt.play();
+    }
+    
+    public void moveMPHtoH(int id) {
+    	pt = new PathTransition();
+    	if(main.getViive() == 1) {
+    		pt.setDuration(Duration.millis(0.5));
+    	} else {
+    		pt.setDuration(Duration.millis(main.getViive()));
+    	}
+    	pt.setNode(myCircles.get(main.getId()- 1));
+    	pt.setPath(MPHtoH);
+    	pt.setOrientation(PathTransition.OrientationType.ORTHOGONAL_TO_TANGENT);
+    	pt.setCycleCount(1);
+    	pt.setAutoReverse(false);
+    	pt.play();
+    }
+    
+    public void moveHtoNPH(int id) {
+    	pt = new PathTransition();
+    	if(main.getViive() == 1) {
+    		pt.setDuration(Duration.millis(0.5));
+    	} else {
+    		pt.setDuration(Duration.millis(main.getViive()));
+    	}
+    	pt.setNode(myCircles.get(main.getId()- 1));
+    	pt.setPath(HtoNPH);
+    	pt.setOrientation(PathTransition.OrientationType.ORTHOGONAL_TO_TANGENT);
+    	pt.setCycleCount(1);
+    	pt.setAutoReverse(false);
+    	pt.play();
+    }
+    
+    public void moveHtoMPH(int id) {
+    	pt = new PathTransition();
+    	if(main.getViive() == 1) {
+    		pt.setDuration(Duration.millis(0.5));
+    	} else {
+    		pt.setDuration(Duration.millis(main.getViive()));
+    	}
+    	pt.setNode(myCircles.get(main.getId()- 1));
+    	pt.setPath(HtoMPH);
+    	pt.setOrientation(PathTransition.OrientationType.ORTHOGONAL_TO_TANGENT);
+    	pt.setCycleCount(1);
+    	pt.setAutoReverse(false);
+    	pt.play();
+    }
+    
+    public void moveMPHtoS(int id) {
+    	pt = new PathTransition();
+    	if(main.getViive() == 1) {
+    		pt.setDuration(Duration.millis(0.5));
+    	} else {
+    		pt.setDuration(Duration.millis(main.getViive()));
+    	}
+    	pt.setNode(myCircles.get(main.getId()- 1));
+    	pt.setPath(MPHtoS);
+    	pt.setOrientation(PathTransition.OrientationType.ORTHOGONAL_TO_TANGENT);
+    	pt.setCycleCount(1);
+    	pt.setAutoReverse(false);
+    	pt.play();
+    }
+    
+    public void moveNPHtoS(int id) {
+    	pt = new PathTransition();
+    	if(main.getViive() == 1) {
+    		pt.setDuration(Duration.millis(0.5));
+    	} else {
+    		pt.setDuration(Duration.millis(main.getViive()));
+    	}
+    	pt.setNode(myCircles.get(main.getId()- 1));
+    	pt.setPath(NPHtoS);
+    	pt.setOrientation(PathTransition.OrientationType.ORTHOGONAL_TO_TANGENT);
+    	pt.setCycleCount(1);
+    	pt.setAutoReverse(false);
+    	pt.play();
+    }
+    
+    public void setVastaanotto(int size) {
+    	vastaanottoTeksti.setText(Integer.toString(size));
+    }
+    public void setRontgen(int size) {
+    	rontgenTeksti.setText(Integer.toString(size));
+    }
+    public void setJuoksu(int size) {
+    	juoksuTeksti.setText(Integer.toString(size));
+    }
+    public void setNPH(int size) {
+    	NPHTeksti.setText(Integer.toString(size));
+    }
+    public void setMPH(int size) {
+    	MPHTeksti.setText(Integer.toString(size));
+    }
+    public void setHieroja(int size) {
+    	hierojaTeksti.setText(Integer.toString(size));
+    }
+    public void setFysio(int size) {
+    	fysioTeksti.setText(Integer.toString(size));
+    }
+    public void setRL(int size) {
+    	RLTeksti.setText(Integer.toString(size));
+    }
+    public void setKuntosali(int size) {
+    	kuntosaliTeksti.setText(Integer.toString(size));
+    }
+    
+    public void createNewAsiakas(int id) {
+    	circle = new Circle(20,20,10,Color.BLACK);
+    	myCircles.add(id, circle);
+    	background.getChildren().add(circle);
+    }
+    
+    public void deleteAllAsiakkaat() {
+    	for(Circle c : myCircles) {
+    		background.getChildren().remove(c);
+    	}
+    }
+    
+    public void addToList(int id, Circle circle) {
+    	myCircles.add(id, circle);
+    }
+    
+	@Override
+	public void initialize(URL arg0, ResourceBundle arg1) {
+		
+	}
+}

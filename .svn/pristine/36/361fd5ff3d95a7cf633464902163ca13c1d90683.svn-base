@@ -1,0 +1,25 @@
+package osat;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
+
+class KelloTest {
+	
+	private static Kello kello;
+	
+	@BeforeAll
+	static void beforeAll () {
+		kello = Kello.getInstance();
+	}
+	
+	@Test
+	void aika () {
+		kello.setAika(10.5);
+		assertEquals(10.5, kello.getAika(), "Palautti väärän ajan");
+		Kello kello2 = Kello.getInstance();
+		assertEquals(10.5, kello2.getAika(), "Singelton ei toimi");
+	}
+
+}

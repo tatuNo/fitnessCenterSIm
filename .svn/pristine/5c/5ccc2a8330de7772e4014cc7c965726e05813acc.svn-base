@@ -1,0 +1,27 @@
+package osat;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
+
+class AsiakkaanTyyppiTest {
+	
+
+	@Test
+	void testArvoTyyppi() {
+		for (int i = 0; i < 10; i++) {
+			System.out.println(AsiakkaanTyyppi.arvoTyyppi());
+		}
+		System.out.println("----------------------------------");
+		fail("Katso konsolisyötteestä että tyypissä on vaihtuvuutta");
+	}
+
+	@Test
+	void testArvoSukupuoli() {
+		for (int i = 0; i < 10; i++) {
+			System.out.println(AsiakkaanTyyppi.arvoSukupuoli());
+		}
+		fail("Katso konsolisyötteestä että sukupuolessa on vaihtuvuutta");
+	}
+
+}

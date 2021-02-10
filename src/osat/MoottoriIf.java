@@ -1,0 +1,51 @@
+package osat;
+
+import osat.AsiakkaanTyyppi.AsiakkaanSukupuoli;
+
+/**
+ * Moottorin rajapinta.
+ * @author Tatu Nordström
+ * @author Nico Järvinen
+ *
+ */
+public interface MoottoriIf {
+		
+	// Kontrolleri käyttää tätä rajapintaa
+	
+	/**
+	 * Asettaa simulointiajan moottoriin.
+	 * @param aika simuloitava aika.
+	 */
+	public void setSimulointiaika(double aika);
+	
+	/**
+	 * Asettaa viiveen simuloinnin kululle.
+	 * @param aika viive millisekunneissa.
+	 */
+	public void setViive(long aika);
+	/**
+	 * Palauttaa viiveen.
+	 * @return viive millisekunneissa.
+	 */
+	public long getViive();
+	public boolean asiakkaanSukupuoli();
+	public long getId();
+	/**
+	 * Metodi tuloksien tallentamiseen tietokantaan.
+	 */
+	public void tallennaTulokset();
+	/**
+	 * Käytetään simuloinnin päättyessä esitettävässä alertissa.
+	 * @return palveltujena asiakkaiden lukumäärä.
+	 */
+	public int getPalveltutAsiakkaat();
+	/**
+	 * Käytetään simuloinnin päättyessä esitettävässä alertissa.
+	 * @return luotujen asiakkaiden määrä.
+	 */
+	public int getKaikkiAsiakkaat();
+	/**
+	 * @return kellon aika.
+	 */
+	public double getAika();
+}

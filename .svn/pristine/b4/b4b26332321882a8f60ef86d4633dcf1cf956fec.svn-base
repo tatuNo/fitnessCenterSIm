@@ -1,0 +1,478 @@
+package view;
+
+
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.ResourceBundle;
+
+import javafx.animation.PathTransition;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.canvas.Canvas;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Circle;
+import javafx.scene.shape.Path;
+import javafx.scene.text.Text;
+import javafx.util.Duration;
+
+public class AnimationOverviewController implements Initializable{
+    
+	private Main main;
+	private final PathTransition pt = new PathTransition();
+	private final PathTransition ptR = new PathTransition();
+	private Visualisointi naytto;
+	private int id = 0;
+	private List<Circle> myCircles = new ArrayList<Circle>();
+	
+	@FXML
+	private Circle circle;
+	@FXML
+	private Path VtoNPH;
+	@FXML
+	private Path VtoMPH;
+	@FXML
+	private Path NPHtoR;
+	@FXML
+	private Path MPHtoR;
+	@FXML
+	private Path RtoNPH;
+	@FXML
+	private Path RtoMPH;
+	@FXML
+	private Path NPHtoF;
+	@FXML
+	private Path MPHtoF;
+	@FXML
+	private Path FtoNPH;
+	@FXML
+	private Path FtoMPH;
+	@FXML
+	private Path NPHtoRL;
+	@FXML
+	private Path MPHtoRL;
+	@FXML
+	private Path RLtoNPH;
+	@FXML
+	private Path RLtoMPH;
+	@FXML
+	private Path NPHtoK;
+	@FXML
+	private Path MPHtoK;
+	@FXML
+	private Path KtoNPH;
+	@FXML
+	private Path KtoMPH;
+	@FXML
+	private Path NPHtoJ;
+	@FXML
+	private Path MPHtoJ;
+	@FXML
+	private Path JtoNPH;
+	@FXML
+	private Path JtoMPH;
+	@FXML
+	private Path NPHtoH;
+	@FXML
+	private Path MPHtoH;
+	@FXML
+	private Path HtoNPH;
+	@FXML
+	private Path HtoMPH;
+	@FXML
+	private Path NPHtoS;
+	@FXML
+	private Path MPHtoS;
+	@FXML
+	private AnchorPane background;
+	@FXML
+	private Canvas canva;
+	@FXML
+	private Text vastaanottoTeksti;
+	@FXML
+	private Text rontgenTeksti;
+	@FXML
+	private Text NPHTeksti;
+	@FXML
+	private Text MPHTeksti;
+	@FXML
+	private Text RLTeksti;
+	@FXML
+	private Text kuntosaliTeksti;
+	@FXML
+	private Text juoksuTeksti;
+	@FXML
+	private Text hierojaTeksti;
+	@FXML
+	private Text fysioTeksti;
+	
+	private int i = 0;
+	
+    public AnimationOverviewController() {
+    	
+    }
+    
+    public void setMain(Main main) {
+        this.main = main;    
+    }
+    
+    public void setCanvas(Canvas canva) {
+    	naytto = new Visualisointi(canva);
+    }   
+    
+    public Visualisointi getVisualisointi() {
+    	return naytto;
+    }
+
+    public void moveToNPH(int id) {
+    	System.out.println("Ympyrä liikkuu.");
+    	pt.setDuration(Duration.millis(main.getViive()));
+    	pt.setNode(myCircles.get(main.getId() - 1));
+    	pt.setPath(VtoNPH);
+    	pt.setOrientation(PathTransition.OrientationType.ORTHOGONAL_TO_TANGENT);
+    	pt.setCycleCount(1);
+    	pt.setAutoReverse(false);
+    	pt.play();
+    }
+    
+    public void moveToMPH(int id) {
+    	System.out.println("Ympyrä liikkuu.");
+    	pt.setDuration(Duration.millis(main.getViive()));
+    	pt.setNode(myCircles.get(main.getId() - 1));
+    	pt.setPath(VtoMPH);
+    	pt.setOrientation(PathTransition.OrientationType.ORTHOGONAL_TO_TANGENT);
+    	pt.setCycleCount(1);
+    	pt.setAutoReverse(false);
+    	pt.play();
+    }
+
+
+    public void moveNPHtoR(int id) {
+    	ptR.setDuration(Duration.millis(main.getViive()));
+    	ptR.setNode(myCircles.get(main.getId() - 1));
+    	ptR.setPath(NPHtoR);
+    	ptR.setOrientation(PathTransition.OrientationType.ORTHOGONAL_TO_TANGENT);
+    	ptR.setCycleCount(1);
+    	ptR.setAutoReverse(false);
+    	ptR.play();
+    }
+    
+    public void moveMPHtoR(int id) {
+    	System.out.println("Ympyrä liikkuu.");
+    	ptR.setDuration(Duration.millis(main.getViive()));
+    	ptR.setNode(myCircles.get(main.getId() - 1));
+    	ptR.setPath(MPHtoR);
+    	ptR.setOrientation(PathTransition.OrientationType.ORTHOGONAL_TO_TANGENT);
+    	ptR.setCycleCount(1);
+    	ptR.setAutoReverse(false);
+    	ptR.play();
+    }
+    
+    public void moveRtoNPH(int id) {
+    	ptR.setDuration(Duration.millis(main.getViive()));
+    	ptR.setNode(myCircles.get(main.getId() - 1));
+    	ptR.setPath(RtoNPH);
+    	ptR.setOrientation(PathTransition.OrientationType.ORTHOGONAL_TO_TANGENT);
+    	ptR.setCycleCount(1);
+    	ptR.setAutoReverse(false);
+    	ptR.play();
+    }
+    
+    public void moveRtoMPH(int id) {
+    	System.out.println("Ympyrä liikkuu.");
+    	ptR.setDuration(Duration.millis(main.getViive()));
+    	ptR.setNode(myCircles.get(main.getId() - 1));
+    	ptR.setPath(RtoMPH);
+    	ptR.setOrientation(PathTransition.OrientationType.ORTHOGONAL_TO_TANGENT);
+    	ptR.setCycleCount(1);
+    	ptR.setAutoReverse(false);
+    	ptR.play();
+    }
+
+    public void moveNPHtoF(int id) {
+    	ptR.setDuration(Duration.millis(main.getViive()));
+    	ptR.setNode(myCircles.get(main.getId() - 1));
+    	ptR.setPath(NPHtoF);
+    	ptR.setOrientation(PathTransition.OrientationType.ORTHOGONAL_TO_TANGENT);
+    	ptR.setCycleCount(1);
+    	ptR.setAutoReverse(false);
+    	ptR.play();
+    }
+    
+    public void moveMPHtoF(int id) {
+    	System.out.println("Ympyrä liikkuu.");
+    	ptR.setDuration(Duration.millis(main.getViive()));
+    	ptR.setNode(myCircles.get(main.getId() - 1));
+    	ptR.setPath(MPHtoF);
+    	ptR.setOrientation(PathTransition.OrientationType.ORTHOGONAL_TO_TANGENT);
+    	ptR.setCycleCount(1);
+    	ptR.setAutoReverse(false);
+    	ptR.play();
+    }
+    
+    public void moveFtoNPH(int id) {
+    	ptR.setDuration(Duration.millis(main.getViive()));
+    	ptR.setNode(myCircles.get(main.getId() - 1));
+    	ptR.setPath(FtoNPH);
+    	ptR.setOrientation(PathTransition.OrientationType.ORTHOGONAL_TO_TANGENT);
+    	ptR.setCycleCount(1);
+    	ptR.setAutoReverse(false);
+    	ptR.play();
+    }
+    
+    public void moveFtoMPH(int id) {
+    	System.out.println("Ympyrä liikkuu.");
+    	ptR.setDuration(Duration.millis(main.getViive()));
+    	ptR.setNode(myCircles.get(main.getId() - 1));
+    	ptR.setPath(FtoMPH);
+    	ptR.setOrientation(PathTransition.OrientationType.ORTHOGONAL_TO_TANGENT);
+    	ptR.setCycleCount(1);
+    	ptR.setAutoReverse(false);
+    	ptR.play();
+    }
+
+    public void moveNPHtoRL(int id) {
+    	ptR.setDuration(Duration.millis(main.getViive()));
+    	ptR.setNode(myCircles.get(main.getId() - 1));
+    	ptR.setPath(NPHtoRL);
+    	ptR.setOrientation(PathTransition.OrientationType.ORTHOGONAL_TO_TANGENT);
+    	ptR.setCycleCount(1);
+    	ptR.setAutoReverse(false);
+    	ptR.play();
+    }
+    
+    public void moveMPHtoRL(int id) {
+    	System.out.println("Ympyrä liikkuu.");
+    	ptR.setDuration(Duration.millis(main.getViive()));
+    	ptR.setNode(myCircles.get(main.getId() - 1));
+    	ptR.setPath(MPHtoRL);
+    	ptR.setOrientation(PathTransition.OrientationType.ORTHOGONAL_TO_TANGENT);
+    	ptR.setCycleCount(1);
+    	ptR.setAutoReverse(false);
+    	ptR.play();
+    }
+    
+    public void moveRLtoNPH(int id) {
+    	ptR.setDuration(Duration.millis(main.getViive()));
+    	ptR.setNode(myCircles.get(main.getId() - 1));
+    	ptR.setPath(RLtoNPH);
+    	ptR.setOrientation(PathTransition.OrientationType.ORTHOGONAL_TO_TANGENT);
+    	ptR.setCycleCount(1);
+    	ptR.setAutoReverse(false);
+    	ptR.play();
+    }
+    
+    public void moveRLtoMPH(int id) {
+    	System.out.println("Ympyrä liikkuu.");
+    	ptR.setDuration(Duration.millis(main.getViive()));
+    	ptR.setNode(myCircles.get(main.getId() - 1));
+    	ptR.setPath(RLtoMPH);
+    	ptR.setOrientation(PathTransition.OrientationType.ORTHOGONAL_TO_TANGENT);
+    	ptR.setCycleCount(1);
+    	ptR.setAutoReverse(false);
+    	ptR.play();
+    }
+    
+    public void moveNPHtoK(int id) {
+    	ptR.setDuration(Duration.millis(main.getViive()));
+    	ptR.setNode(myCircles.get(main.getId() - 1));
+    	ptR.setPath(NPHtoK);
+    	ptR.setOrientation(PathTransition.OrientationType.ORTHOGONAL_TO_TANGENT);
+    	ptR.setCycleCount(1);
+    	ptR.setAutoReverse(false);
+    	ptR.play();
+    }
+    
+    public void moveMPHtoK(int id) {
+    	System.out.println("Ympyrä liikkuu.");
+    	ptR.setDuration(Duration.millis(main.getViive()));
+    	ptR.setNode(myCircles.get(main.getId() - 1));
+    	ptR.setPath(MPHtoK);
+    	ptR.setOrientation(PathTransition.OrientationType.ORTHOGONAL_TO_TANGENT);
+    	ptR.setCycleCount(1);
+    	ptR.setAutoReverse(false);
+    	ptR.play();
+    }
+    
+    public void moveKtoNPH(int id) {
+    	ptR.setDuration(Duration.millis(main.getViive()));
+    	ptR.setNode(myCircles.get(main.getId() - 1));
+    	ptR.setPath(KtoNPH);
+    	ptR.setOrientation(PathTransition.OrientationType.ORTHOGONAL_TO_TANGENT);
+    	ptR.setCycleCount(1);
+    	ptR.setAutoReverse(false);
+    	ptR.play();
+    }
+    
+    public void moveKtoMPH(int id) {
+    	System.out.println("Ympyrä liikkuu.");
+    	ptR.setDuration(Duration.millis(main.getViive()));
+    	ptR.setNode(myCircles.get(main.getId() - 1));
+    	ptR.setPath(KtoMPH);
+    	ptR.setOrientation(PathTransition.OrientationType.ORTHOGONAL_TO_TANGENT);
+    	ptR.setCycleCount(1);
+    	ptR.setAutoReverse(false);
+    	ptR.play();
+    }
+    
+    public void moveNPHtoJ(int id) {
+    	ptR.setDuration(Duration.millis(main.getViive()));
+    	ptR.setNode(myCircles.get(main.getId() - 1));
+    	ptR.setPath(NPHtoJ);
+    	ptR.setOrientation(PathTransition.OrientationType.ORTHOGONAL_TO_TANGENT);
+    	ptR.setCycleCount(1);
+    	ptR.setAutoReverse(false);
+    	ptR.play();
+    }
+    
+    public void moveMPHtoJ(int id) {
+    	System.out.println("Ympyrä liikkuu.");
+    	ptR.setDuration(Duration.millis(main.getViive()));
+    	ptR.setNode(myCircles.get(main.getId() - 1));
+    	ptR.setPath(MPHtoJ);
+    	ptR.setOrientation(PathTransition.OrientationType.ORTHOGONAL_TO_TANGENT);
+    	ptR.setCycleCount(1);
+    	ptR.setAutoReverse(false);
+    	ptR.play();
+    }
+    
+    public void moveJtoNPH(int id) {
+    	ptR.setDuration(Duration.millis(main.getViive()));
+    	ptR.setNode(myCircles.get(main.getId() - 1));
+    	ptR.setPath(JtoNPH);
+    	ptR.setOrientation(PathTransition.OrientationType.ORTHOGONAL_TO_TANGENT);
+    	ptR.setCycleCount(1);
+    	ptR.setAutoReverse(false);
+    	ptR.play();
+    }
+    
+    public void moveJtoMPH(int id) {
+    	System.out.println("Ympyrä liikkuu.");
+    	ptR.setDuration(Duration.millis(main.getViive()));
+    	ptR.setNode(myCircles.get(main.getId() - 1));
+    	ptR.setPath(JtoMPH);
+    	ptR.setOrientation(PathTransition.OrientationType.ORTHOGONAL_TO_TANGENT);
+    	ptR.setCycleCount(1);
+    	ptR.setAutoReverse(false);
+    	ptR.play();
+    }
+    
+    public void moveNPHtoH(int id) {
+    	ptR.setDuration(Duration.millis(main.getViive()));
+    	ptR.setNode(myCircles.get(main.getId() - 1));
+    	ptR.setPath(NPHtoH);
+    	ptR.setOrientation(PathTransition.OrientationType.ORTHOGONAL_TO_TANGENT);
+    	ptR.setCycleCount(1);
+    	ptR.setAutoReverse(false);
+    	ptR.play();
+    }
+    
+    public void moveMPHtoH(int id) {
+    	System.out.println("Ympyrä liikkuu.");
+    	ptR.setDuration(Duration.millis(main.getViive()));
+    	ptR.setNode(myCircles.get(main.getId() - 1));
+    	ptR.setPath(MPHtoH);
+    	ptR.setOrientation(PathTransition.OrientationType.ORTHOGONAL_TO_TANGENT);
+    	ptR.setCycleCount(1);
+    	ptR.setAutoReverse(false);
+    	ptR.play();
+    }
+    
+    public void moveHtoNPH(int id) {
+    	ptR.setDuration(Duration.millis(main.getViive()));
+    	ptR.setNode(myCircles.get(main.getId() - 1));
+    	ptR.setPath(HtoNPH);
+    	ptR.setOrientation(PathTransition.OrientationType.ORTHOGONAL_TO_TANGENT);
+    	ptR.setCycleCount(1);
+    	ptR.setAutoReverse(false);
+    	ptR.play();
+    }
+    
+    public void moveHtoMPH(int id) {
+    	System.out.println("Ympyrä liikkuu.");
+    	ptR.setDuration(Duration.millis(main.getViive()));
+    	ptR.setNode(myCircles.get(main.getId() - 1));
+    	ptR.setPath(HtoMPH);
+    	ptR.setOrientation(PathTransition.OrientationType.ORTHOGONAL_TO_TANGENT);
+    	ptR.setCycleCount(1);
+    	ptR.setAutoReverse(false);
+    	ptR.play();
+    }
+    
+    public void moveMPHtoS(int id) {
+    	System.out.println("Ympyrä liikkuu.");
+    	ptR.setDuration(Duration.millis(main.getViive()));
+    	ptR.setNode(myCircles.get(main.getId() - 1));
+    	ptR.setPath(MPHtoS);
+    	ptR.setOrientation(PathTransition.OrientationType.ORTHOGONAL_TO_TANGENT);
+    	ptR.setCycleCount(1);
+    	ptR.setAutoReverse(false);
+    	ptR.play();
+    }
+    
+    public void moveNPHtoS(int id) {
+    	System.out.println("Ympyrä liikkuu.");
+    	ptR.setDuration(Duration.millis(main.getViive()));
+    	ptR.setNode(myCircles.get(main.getId() - 1));
+    	ptR.setPath(NPHtoS);
+    	ptR.setOrientation(PathTransition.OrientationType.ORTHOGONAL_TO_TANGENT);
+    	ptR.setCycleCount(1);
+    	ptR.setAutoReverse(false);
+    	ptR.play();
+    }
+    
+    public void setVastaanotto(int size) {
+    	vastaanottoTeksti.setText(Integer.toString(size));
+    }
+    public void setRontgen(int size) {
+    	rontgenTeksti.setText(Integer.toString(size));
+    }
+    public void setJuoksu(int size) {
+    	juoksuTeksti.setText(Integer.toString(size));
+    }
+    public void setNPH(int size) {
+    	NPHTeksti.setText(Integer.toString(size));
+    }
+    public void setMPH(int size) {
+    	MPHTeksti.setText(Integer.toString(size));
+    }
+    public void setHieroja(int size) {
+    	hierojaTeksti.setText(Integer.toString(size));
+    }
+    public void setFysio(int size) {
+    	fysioTeksti.setText(Integer.toString(size));
+    }
+    public void setRL(int size) {
+    	RLTeksti.setText(Integer.toString(size));
+    }
+    public void setKuntosali(int size) {
+    	kuntosaliTeksti.setText(Integer.toString(size));
+    }
+    
+    public void createNewAsiakas(int id) {
+    	circle = new Circle(20,20,10,Color.BLACK);
+    	myCircles.add(id, circle);
+    	background.getChildren().add(circle);
+    }
+    
+    public void deleteAllAsiakkaat() {
+    	for(Circle c : myCircles) {
+    		background.getChildren().remove(c);
+    	}
+    }
+    
+    public Circle getAsiakas(int id) {
+    	Circle temp = myCircles.get(id);
+    	return temp;
+    }
+    
+    public void addToList(int id, Circle circle) {
+    	myCircles.add(id, circle);
+    }
+    
+	@Override
+	public void initialize(URL arg0, ResourceBundle arg1) {
+		
+	}
+}

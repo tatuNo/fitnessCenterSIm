@@ -1,0 +1,129 @@
+package osat;
+
+import java.util.LinkedList;
+
+/**
+ * Luokka määrittelee, miten simulaattorin ryhmäliikunta palvelupiste toimii. Ideana tässä oli, että
+ * palveluaika on kiinteä (20) ja että palvelu käynnistetään, kun kapasiteetti on täysi (10).
+ * Asiakkaat ovat jonossa palvelun ajan. Kapasiteetin tarkastelu (onkoTaysi) tehdään moottorin C tapahtumissa.
+ * @author Tatu Nordström
+ *
+ */
+public class Ryhmaliikunta {
+	
+	/** Simulaattorin moottori. */
+	private Moottori moottori;
+	/** Jono asiakkaille. */
+	private LinkedList<Asiakas> jono = new LinkedList<Asiakas>();
+	/** TapahtumanTyyyppi jota ryhmäliikunta luo. */
+	private TapahtumanTyyppi skeduloitavanTapahtumanTyyppi;
+	/** Ryhmäliikunnan palveluaika, vakio. */
+	private static final double PALVELUAIKA = 20;
+	/** Ryhmä liikunnan kapasiteetti. */
+	private static final int KAPASITEETTI = 10;
+	/** Kertoo onko ryhmäliikunta käynnissä. */
+	private boolean onKaynnissa = false;
+	/** Palveltujen asiakkaiden määrä. */
+	private int palveltutAsiakkaat;
+	/** Ryhmaliikunnan aktiiviaika. */
+	private double aktiiviaika;
+	/** Suorituskykysuureet olio, johon simulointulokset asetetaan. */
+	private Suorituskykysuureet suureet;
+	
+	/**
+	 * Ryhmaliikunnan konstruktori, huomioitavaa että generaattoria ei anneta tälle luokalle parametrinä,
+	 * koska palveluaika on kiinteä.
+	 * @param moottori moottori -luokka, jotta päästään käsiksi sen metodeihin.
+	 * @param tyyppi skeduloitavan tapahtuman tyyppi.
+	 */
+	public Ryhmaliikunta (Moottori moottori, TapahtumanTyyppi tyyppi) {
+		this.moottori = moottori;
+		this.skeduloitavanTapahtumanTyyppi = tyyppi;		
+	}
+	
+	
+	/**
+	 * Lisää LinkedList jonoon asiakkaan.
+	 * @param a jonoon lisättävä asiakas.
+	 */
+	public void lisaaJonoon (Asiakas a) {
+		jono.add(a);
+	}
+	
+
+	/**
+	 * Ottaa jonosta asiakkaan, päivittää aktiiviajan ja palveltut asiakkaat.
+	 * Huomioitavaa, että näitä tulee samalle ajan hetkelle aina 10 kun ryhmäliikunta suoritetaan.
+	 * @return
+	 */
+	public Asiakas otaJonosta() {
+		aktiiviaika += PALVELUAIKA / KAPASITEETTI;
+		onKaynnissa = false;
+		palveltutAsiakkaat++;
+		return jono.poll();
+	}
+	
+	/**
+	 * Kun ryhmäliikunta on täysi ja se ei ole käynnissä, voidaan aloitaPalvelu suorittaa.
+	 * Moottori skeduloi 10 uutta tapahtumaa tulevalle ajan hetkelle, kiinteä palveluaika.
+	 */
+	public void aloitaPalvelu () {
+		onKaynnissa = true;
+		System.out.println("RYHMÄLIIKUNTA KÄYNTIIN");
+		for(int i = 0; i < jono.size(); i++) {
+			moottori.uusiTapahtuma(new Tapahtuma(skeduloitavanTapahtumanTyyppi,Kello.getInstance().getAika()+PALVELUAIKA));
+		}
+	}
+	
+	/**
+	 * Moottori käyttää tätä tarkasteluun voidaanko palvelu käynnistää.
+	 * @return true jos on täysi, false jos ei.
+	 */
+	public boolean onTaysi () {
+		return jono.size() == KAPASITEETTI;
+	}
+	
+	/**
+	 * Palauttaa booleanin siitä, onko palvelu käynnissä.
+	 * @return true jos on, false jos ei.
+	 */
+	public boolean getOnkaynnissa () {
+		return onKaynnissa;
+	}
+	
+	/**
+	 * Palauttaa jonon koon, käytetään käyttöliittymän päivitykseen.
+	 * @return jonon koko.
+	 */
+	public int getJonoSize() {
+		return jono.size();
+	}
+
+	/**
+	 * @return Palauttaa Suorituskykysuureet olion, jossa palvelupistekohtaiset simulointitulokset.
+	 */
+	public Suorituskykysuureet getSuorituskykysuureet () {
+		return suureet;
+	}
+	
+	/**
+	 * Tätä metodia kutsutaan moottorissa, kun simulointi päättyy.
+	 * Lasketaan suorituskykysuureet ja pyöristetään ne kahden desimaalin tarkkuudelle.
+	 * Luodaan Suorituskykysuureet olio näistä suureista, jotta tallentaminen tietokantaan olisi näppärämpää.
+	 * @return tekstimuotoinen raportti simuloinnin tuloksista, palvelupistekohtainen.	 
+	 */
+	public String raportti () {
+		
+		double kayttoaste = (aktiiviaika / Kello.getInstance().getAika()) * 100.0;
+		kayttoaste = Math.round(kayttoaste * 100.0) / 100.0;
+		
+		int tunnit = (int)Kello.getInstance().getAika() / 60;
+		double suoritusteho = palveltutAsiakkaat / (double) tunnit;
+		suoritusteho = Math.round(suoritusteho * 100.0) / 100.0;
+		
+		suureet = new Suorituskykysuureet(palveltutAsiakkaat, aktiiviaika, kayttoaste, suoritusteho, PALVELUAIKA);
+		
+		return "Palveltuja asiakkaita: " + palveltutAsiakkaat + " AKTIIVIAIKA: " + aktiiviaika + " KÄYTTÖASTE: " + kayttoaste + "% " + " SUORITUSTEHO: "
+		+suoritusteho + " asiakasta/tunti\n" + "AVG PALVELUAIKA: " + PALVELUAIKA + "\n";
+	}
+}

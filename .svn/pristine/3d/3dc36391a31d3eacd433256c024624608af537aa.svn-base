@@ -1,0 +1,479 @@
+package osat;
+import java.sql.*;
+import java.util.ArrayList;
+
+public class SuorituskykysuureetAccessObject implements ISuorituskykysuureetDAO {
+
+		private Connection myCon; // Create, Read, Update, Delete
+
+		public SuorituskykysuureetAccessObject() { 
+			try {
+				Class.forName("com.mysql.jdbc.Driver");
+				myCon = DriverManager.getConnection("jdbc:mysql://mysql.metropolia.fi:3306/tatun",
+						"tatun", "l33tsh4kk1");
+			} catch (Exception e) {
+				System.err.println("Virhe tietokantayhteyden muodostamisessa.");
+				System.exit(-1); 
+			}
+		}
+
+		@Override
+		protected void finalize() { 
+			try { 
+				if (myCon != null)
+					myCon.close(); 
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+
+		@Override
+		public boolean luoSuorituskykysuurre(Suorituskykysuureet suurre) {
+			switch(suurre.getTaulunNimi()) {
+			case "vastaanotto":
+				try(PreparedStatement myStatement = myCon.prepareStatement("INSERT INTO vastaanotto (`paivays`, `simulointiaika`, `palveltut asiakkaat`, `aktiiviaika`, `kayttoaste`, `suoritusteho`, `avg palveluaika`, `kokonaisoleskeluaika`, `avg lapimenoaika`, `avg jonon pituus`) VALUES (?,?,?,?,?,?,?,?,?,?)"))
+				{
+					myStatement.setString(1, suurre.getPaivays());
+					myStatement.setInt(2, suurre.getSimulointiaika());
+					myStatement.setInt(3, suurre.getPalveltutAsiakkaat());
+					myStatement.setDouble(4, suurre.getAktiiviaika());
+					myStatement.setDouble(5, suurre.getKayttoaste());
+					myStatement.setDouble(6, suurre.getSuoritusteho());
+					myStatement.setDouble(7, suurre.getAvgPalveluaika());
+					myStatement.setDouble(8, suurre.getLapimenoAjat());
+					myStatement.setDouble(9, suurre.getAvgLapimenoajat());
+					myStatement.setDouble(10, suurre.getAvgjononpituus());
+					
+					int x = myStatement.executeUpdate();
+					System.out.println("Pitäisi tulla 1 " + x);
+					
+				}	catch(SQLException e) {
+					do {
+						System.err.println("Viesti: " + e.getMessage());
+						System.err.println("Viesti: " + e.getErrorCode());
+						System.err.println("Viesti: " + e.getSQLState());
+					} while (e.getNextException() != null);
+				}
+				break;
+			case "miestenPH":
+				try(PreparedStatement myStatement = myCon.prepareStatement("INSERT INTO miestenPH (`paivays`, `simulointiaika`, `palveltut asiakkaat`, `aktiiviaika`, `kayttoaste`, `suoritusteho`, `avg palveluaika`) VALUES (?,?,?,?,?,?,?)"))
+				{
+					myStatement.setString(1, suurre.getPaivays());
+					myStatement.setInt(2, suurre.getSimulointiaika());
+					myStatement.setInt(3, suurre.getPalveltutAsiakkaat());
+					myStatement.setDouble(4, suurre.getAktiiviaika());
+					myStatement.setDouble(5, suurre.getKayttoaste());
+					myStatement.setDouble(6, suurre.getSuoritusteho());
+					myStatement.setDouble(7, suurre.getAvgPalveluaika());
+					
+					int x = myStatement.executeUpdate();
+					System.out.println("Pitäisi tulla 1 " + x);
+					
+				}	catch(SQLException e) {
+					do {
+						System.err.println("Viesti: " + e.getMessage());
+						System.err.println("Viesti: " + e.getErrorCode());
+						System.err.println("Viesti: " + e.getSQLState());
+					} while (e.getNextException() != null);
+				}
+				break;
+			case "naistenPH":
+				try(PreparedStatement myStatement = myCon.prepareStatement("INSERT INTO naistenPH (`paivays`, `simulointiaika`, `palveltut asiakkaat`, `aktiiviaika`, `kayttoaste`, `suoritusteho`, `avg palveluaika`) VALUES (?,?,?,?,?,?,?)"))
+				{
+					myStatement.setString(1, suurre.getPaivays());
+					myStatement.setInt(2, suurre.getSimulointiaika());
+					myStatement.setInt(3, suurre.getPalveltutAsiakkaat());
+					myStatement.setDouble(4, suurre.getAktiiviaika());
+					myStatement.setDouble(5, suurre.getKayttoaste());
+					myStatement.setDouble(6, suurre.getSuoritusteho());
+					myStatement.setDouble(7, suurre.getAvgPalveluaika());
+					
+					int x = myStatement.executeUpdate();
+					System.out.println("Pitäisi tulla 1 " + x);
+					
+				}	catch(SQLException e) {
+					do {
+						System.err.println("Viesti: " + e.getMessage());
+						System.err.println("Viesti: " + e.getErrorCode());
+						System.err.println("Viesti: " + e.getSQLState());
+					} while (e.getNextException() != null);
+				}
+				break;
+			case "hieronta":
+				try(PreparedStatement myStatement = myCon.prepareStatement("INSERT INTO hieronta (`paivays`, `simulointiaika`, `palveltut asiakkaat`, `aktiiviaika`, `kayttoaste`, `suoritusteho`, `avg palveluaika`, `kokonaisoleskeluaika`, `avg lapimenoaika`, `avg jonon pituus`) VALUES (?,?,?,?,?,?,?,?,?,?)"))
+				{
+					myStatement.setString(1, suurre.getPaivays());
+					myStatement.setInt(2, suurre.getSimulointiaika());
+					myStatement.setInt(3, suurre.getPalveltutAsiakkaat());
+					myStatement.setDouble(4, suurre.getAktiiviaika());
+					myStatement.setDouble(5, suurre.getKayttoaste());
+					myStatement.setDouble(6, suurre.getSuoritusteho());
+					myStatement.setDouble(7, suurre.getAvgPalveluaika());
+					myStatement.setDouble(8, suurre.getLapimenoAjat());
+					myStatement.setDouble(9, suurre.getAvgLapimenoajat());
+					myStatement.setDouble(10, suurre.getAvgjononpituus());
+					
+					int x = myStatement.executeUpdate();
+					System.out.println("Pitäisi tulla 1 " + x);
+					
+				}	catch(SQLException e) {
+					do {
+						System.err.println("Viesti: " + e.getMessage());
+						System.err.println("Viesti: " + e.getErrorCode());
+						System.err.println("Viesti: " + e.getSQLState());
+					} while (e.getNextException() != null);
+				}
+				break;
+			case "fysioterapia":
+				try(PreparedStatement myStatement = myCon.prepareStatement("INSERT INTO fysioterapia (`paivays`, `simulointiaika`, `palveltut asiakkaat`, `aktiiviaika`, `kayttoaste`, `suoritusteho`, `avg palveluaika`, `kokonaisoleskeluaika`, `avg lapimenoaika`, `avg jonon pituus`) VALUES (?,?,?,?,?,?,?,?,?,?)"))
+				{
+					myStatement.setString(1, suurre.getPaivays());
+					myStatement.setInt(2, suurre.getSimulointiaika());
+					myStatement.setInt(3, suurre.getPalveltutAsiakkaat());
+					myStatement.setDouble(4, suurre.getAktiiviaika());
+					myStatement.setDouble(5, suurre.getKayttoaste());
+					myStatement.setDouble(6, suurre.getSuoritusteho());
+					myStatement.setDouble(7, suurre.getAvgPalveluaika());
+					myStatement.setDouble(8, suurre.getLapimenoAjat());
+					myStatement.setDouble(9, suurre.getAvgLapimenoajat());
+					myStatement.setDouble(10, suurre.getAvgjononpituus());
+					
+					int x = myStatement.executeUpdate();
+					System.out.println("Pitäisi tulla 1 " + x);
+					
+				}	catch(SQLException e) {
+					do {
+						System.err.println("Viesti: " + e.getMessage());
+						System.err.println("Viesti: " + e.getErrorCode());
+						System.err.println("Viesti: " + e.getSQLState());
+					} while (e.getNextException() != null);
+				}
+				break;
+			case "rontgen":
+				try(PreparedStatement myStatement = myCon.prepareStatement("INSERT INTO rontgen (`paivays`, `simulointiaika`, `palveltut asiakkaat`, `aktiiviaika`, `kayttoaste`, `suoritusteho`, `avg palveluaika`, `kokonaisoleskeluaika`, `avg lapimenoaika`, `avg jonon pituus`) VALUES (?,?,?,?,?,?,?,?,?,?)"))
+				{
+					myStatement.setString(1, suurre.getPaivays());
+					myStatement.setInt(2, suurre.getSimulointiaika());
+					myStatement.setInt(3, suurre.getPalveltutAsiakkaat());
+					myStatement.setDouble(4, suurre.getAktiiviaika());
+					myStatement.setDouble(5, suurre.getKayttoaste());
+					myStatement.setDouble(6, suurre.getSuoritusteho());
+					myStatement.setDouble(7, suurre.getAvgPalveluaika());
+					myStatement.setDouble(8, suurre.getLapimenoAjat());
+					myStatement.setDouble(9, suurre.getAvgLapimenoajat());
+					myStatement.setDouble(10, suurre.getAvgjononpituus());
+					
+					int x = myStatement.executeUpdate();
+					System.out.println("Pitäisi tulla 1 " + x);
+					
+				}	catch(SQLException e) {
+					do {
+						System.err.println("Viesti: " + e.getMessage());
+						System.err.println("Viesti: " + e.getErrorCode());
+						System.err.println("Viesti: " + e.getSQLState());
+					} while (e.getNextException() != null);
+				}
+				break;
+			case "kuntosali":
+				try(PreparedStatement myStatement = myCon.prepareStatement("INSERT INTO kuntosali (`paivays`, `simulointiaika`, `palveltut asiakkaat`, `aktiiviaika`, `kayttoaste`, `suoritusteho`, `avg palveluaika`) VALUES (?,?,?,?,?,?,?)"))
+				{
+					myStatement.setString(1, suurre.getPaivays());
+					myStatement.setInt(2, suurre.getSimulointiaika());
+					myStatement.setInt(3, suurre.getPalveltutAsiakkaat());
+					myStatement.setDouble(4, suurre.getAktiiviaika());
+					myStatement.setDouble(5, suurre.getKayttoaste());
+					myStatement.setDouble(6, suurre.getSuoritusteho());
+					myStatement.setDouble(7, suurre.getAvgPalveluaika());
+					
+					int x = myStatement.executeUpdate();
+					System.out.println("Pitäisi tulla 1 " + x);
+					
+				}	catch(SQLException e) {
+					do {
+						System.err.println("Viesti: " + e.getMessage());
+						System.err.println("Viesti: " + e.getErrorCode());
+						System.err.println("Viesti: " + e.getSQLState());
+					} while (e.getNextException() != null);
+				}
+				break;
+			case "juoksumatto":
+				try(PreparedStatement myStatement = myCon.prepareStatement("INSERT INTO juoksumatto (`paivays`, `simulointiaika`, `palveltut asiakkaat`, `aktiiviaika`, `kayttoaste`, `suoritusteho`, `avg palveluaika`) VALUES (?,?,?,?,?,?,?)"))
+				{
+					myStatement.setString(1, suurre.getPaivays());
+					myStatement.setInt(2, suurre.getSimulointiaika());
+					myStatement.setInt(3, suurre.getPalveltutAsiakkaat());
+					myStatement.setDouble(4, suurre.getAktiiviaika());
+					myStatement.setDouble(5, suurre.getKayttoaste());
+					myStatement.setDouble(6, suurre.getSuoritusteho());
+					myStatement.setDouble(7, suurre.getAvgPalveluaika());
+					
+					int x = myStatement.executeUpdate();
+					System.out.println("Pitäisi tulla 1 " + x);
+					
+				}	catch(SQLException e) {
+					do {
+						System.err.println("Viesti: " + e.getMessage());
+						System.err.println("Viesti: " + e.getErrorCode());
+						System.err.println("Viesti: " + e.getSQLState());
+					} while (e.getNextException() != null);
+				}
+				break;
+			case "ryhmaliikunta":
+				try(PreparedStatement myStatement = myCon.prepareStatement("INSERT INTO ryhmaliikunta (`paivays`, `simulointiaika`, `palveltut asiakkaat`, `aktiiviaika`, `kayttoaste`, `suoritusteho`, `avg palveluaika`) VALUES (?,?,?,?,?,?,?)"))
+				{
+					myStatement.setString(1, suurre.getPaivays());
+					myStatement.setInt(2, suurre.getSimulointiaika());
+					myStatement.setInt(3, suurre.getPalveltutAsiakkaat());
+					myStatement.setDouble(4, suurre.getAktiiviaika());
+					myStatement.setDouble(5, suurre.getKayttoaste());
+					myStatement.setDouble(6, suurre.getSuoritusteho());
+					myStatement.setDouble(7, suurre.getAvgPalveluaika());
+					
+					int x = myStatement.executeUpdate();
+					System.out.println("Pitäisi tulla 1 " + x);
+					
+				}	catch(SQLException e) {
+					do {
+						System.err.println("Viesti: " + e.getMessage());
+						System.err.println("Viesti: " + e.getErrorCode());
+						System.err.println("Viesti: " + e.getSQLState());
+					} while (e.getNextException() != null);
+				}
+				break;
+			
+			}
+			return true;
+		}
+
+		@Override
+		public Suorituskykysuureet[] lueSuorituskykysuurreet(String palvelupiste) {
+			ArrayList<Suorituskykysuureet> lista = new ArrayList<>();
+			
+			switch(palvelupiste) {
+			case "vastaanotto":
+				try(PreparedStatement myStatement = myCon.prepareStatement("SELECT * from vastaanotto"))
+				{
+					ResultSet myRs = myStatement.executeQuery();
+					while(myRs.next()) {
+					Suorituskykysuureet suureet = new Suorituskykysuureet();
+					suureet.setPaivays(myRs.getString("paivays"));
+					suureet.setSimulointiaika(myRs.getInt("simulointiaika"));
+					suureet.setPalveltutAsiakkaat(myRs.getInt("palveltut asiakkaat"));
+					suureet.setAktiiviaika(myRs.getDouble("aktiiviaika"));
+					suureet.setKayttoaste(myRs.getDouble("kayttoaste"));
+					suureet.setSuoritusteho(myRs.getDouble("suoritusteho"));
+					suureet.setAvgPalveluaika(myRs.getDouble("avg palveluaika"));
+					suureet.setLapimenoAjat(myRs.getDouble("kokonaisoleskeluaika"));
+					suureet.setAvgLapimenoajat(myRs.getDouble("avg lapimenoaika"));
+					suureet.setAvgjononpituus(myRs.getDouble("avg jonon pituus"));
+					lista.add(suureet);
+					}
+				}	catch(SQLException e) {
+					do {
+						System.err.println("Viesti: " + e.getMessage());
+						System.err.println("Viesti: " + e.getErrorCode());
+						System.err.println("Viesti: " + e.getSQLState());
+					} while (e.getNextException() != null);
+				}
+				break;
+			case "miestenPH":
+				try(PreparedStatement myStatement = myCon.prepareStatement("SELECT * FROM miestenPH"))
+				{
+					ResultSet myRs = myStatement.executeQuery();
+					while(myRs.next()) {
+					Suorituskykysuureet suureet = new Suorituskykysuureet();
+					suureet.setPaivays(myRs.getString("paivays"));
+					suureet.setSimulointiaika(myRs.getInt("simulointiaika"));
+					suureet.setPalveltutAsiakkaat(myRs.getInt("palveltut asiakkaat"));
+					suureet.setAktiiviaika(myRs.getDouble("aktiiviaika"));
+					suureet.setKayttoaste(myRs.getDouble("kayttoaste"));
+					suureet.setSuoritusteho(myRs.getDouble("suoritusteho"));
+					suureet.setAvgPalveluaika(myRs.getDouble("avg palveluaika"));
+					lista.add(suureet);
+					}
+				}	catch(SQLException e) {
+					do {
+						System.err.println("Viesti: " + e.getMessage());
+						System.err.println("Viesti: " + e.getErrorCode());
+						System.err.println("Viesti: " + e.getSQLState());
+					} while (e.getNextException() != null);
+				}
+				break;
+			case "naistenPH":
+				try(PreparedStatement myStatement = myCon.prepareStatement("SELECT * FROM naistenPH"))
+				{
+					ResultSet myRs = myStatement.executeQuery();
+					while(myRs.next()) {
+					Suorituskykysuureet suureet = new Suorituskykysuureet();
+					suureet.setPaivays(myRs.getString("paivays"));
+					suureet.setSimulointiaika(myRs.getInt("simulointiaika"));
+					suureet.setPalveltutAsiakkaat(myRs.getInt("palveltut asiakkaat"));
+					suureet.setAktiiviaika(myRs.getDouble("aktiiviaika"));
+					suureet.setKayttoaste(myRs.getDouble("kayttoaste"));
+					suureet.setSuoritusteho(myRs.getDouble("suoritusteho"));
+					suureet.setAvgPalveluaika(myRs.getDouble("avg palveluaika"));
+					lista.add(suureet);
+					}
+				}	catch(SQLException e) {
+					do {
+						System.err.println("Viesti: " + e.getMessage());
+						System.err.println("Viesti: " + e.getErrorCode());
+						System.err.println("Viesti: " + e.getSQLState());
+					} while (e.getNextException() != null);
+				}
+				break;
+			case "hieronta":
+				try(PreparedStatement myStatement = myCon.prepareStatement("SELECT * FROM hieronta"))
+				{
+					ResultSet myRs = myStatement.executeQuery();
+					while(myRs.next()) {
+					Suorituskykysuureet suureet = new Suorituskykysuureet();
+					suureet.setPaivays(myRs.getString("paivays"));
+					suureet.setSimulointiaika(myRs.getInt("simulointiaika"));
+					suureet.setPalveltutAsiakkaat(myRs.getInt("palveltut asiakkaat"));
+					suureet.setAktiiviaika(myRs.getDouble("aktiiviaika"));
+					suureet.setKayttoaste(myRs.getDouble("kayttoaste"));
+					suureet.setSuoritusteho(myRs.getDouble("suoritusteho"));
+					suureet.setAvgPalveluaika(myRs.getDouble("avg palveluaika"));
+					suureet.setLapimenoAjat(myRs.getDouble("kokonaisoleskeluaika"));
+					suureet.setAvgLapimenoajat(myRs.getDouble("avg lapimenoaika"));
+					suureet.setAvgjononpituus(myRs.getDouble("avg jonon pituus"));
+					lista.add(suureet);
+					}
+				}	catch(SQLException e) {
+					do {
+						System.err.println("Viesti: " + e.getMessage());
+						System.err.println("Viesti: " + e.getErrorCode());
+						System.err.println("Viesti: " + e.getSQLState());
+					} while (e.getNextException() != null);
+				}
+				break;
+			case "fysioterapia":
+				try(PreparedStatement myStatement = myCon.prepareStatement("SELECT * FROM fysioterapia"))
+				{
+					ResultSet myRs = myStatement.executeQuery();
+					while(myRs.next()) {
+					Suorituskykysuureet suureet = new Suorituskykysuureet();
+					suureet.setPaivays(myRs.getString("paivays"));
+					suureet.setSimulointiaika(myRs.getInt("simulointiaika"));
+					suureet.setPalveltutAsiakkaat(myRs.getInt("palveltut asiakkaat"));
+					suureet.setAktiiviaika(myRs.getDouble("aktiiviaika"));
+					suureet.setKayttoaste(myRs.getDouble("kayttoaste"));
+					suureet.setSuoritusteho(myRs.getDouble("suoritusteho"));
+					suureet.setAvgPalveluaika(myRs.getDouble("avg palveluaika"));
+					suureet.setLapimenoAjat(myRs.getDouble("kokonaisoleskeluaika"));
+					suureet.setAvgLapimenoajat(myRs.getDouble("avg lapimenoaika"));
+					suureet.setAvgjononpituus(myRs.getDouble("avg jonon pituus"));
+					lista.add(suureet);
+					}
+				}	catch(SQLException e) {
+					do {
+						System.err.println("Viesti: " + e.getMessage());
+						System.err.println("Viesti: " + e.getErrorCode());
+						System.err.println("Viesti: " + e.getSQLState());
+					} while (e.getNextException() != null);
+				}
+				break;
+			case "rontgen":
+				try(PreparedStatement myStatement = myCon.prepareStatement("SELECT * FROM rontgen"))
+				{
+					ResultSet myRs = myStatement.executeQuery();
+					while(myRs.next()) {
+					Suorituskykysuureet suureet = new Suorituskykysuureet();
+					suureet.setPaivays(myRs.getString("paivays"));
+					suureet.setSimulointiaika(myRs.getInt("simulointiaika"));
+					suureet.setPalveltutAsiakkaat(myRs.getInt("palveltut asiakkaat"));
+					suureet.setAktiiviaika(myRs.getDouble("aktiiviaika"));
+					suureet.setKayttoaste(myRs.getDouble("kayttoaste"));
+					suureet.setSuoritusteho(myRs.getDouble("suoritusteho"));
+					suureet.setAvgPalveluaika(myRs.getDouble("avg palveluaika"));
+					suureet.setLapimenoAjat(myRs.getDouble("kokonaisoleskeluaika"));
+					suureet.setAvgLapimenoajat(myRs.getDouble("avg lapimenoaika"));
+					suureet.setAvgjononpituus(myRs.getDouble("avg jonon pituus"));
+					lista.add(suureet);
+					}
+				}	catch(SQLException e) {
+					do {
+						System.err.println("Viesti: " + e.getMessage());
+						System.err.println("Viesti: " + e.getErrorCode());
+						System.err.println("Viesti: " + e.getSQLState());
+					} while (e.getNextException() != null);
+				}
+				break;
+			case "kuntosali":
+				try(PreparedStatement myStatement = myCon.prepareStatement("SELECT * FROM kuntosali"))
+				{
+					ResultSet myRs = myStatement.executeQuery();
+					while(myRs.next()) {
+					Suorituskykysuureet suureet = new Suorituskykysuureet();
+					suureet.setPaivays(myRs.getString("paivays"));
+					suureet.setSimulointiaika(myRs.getInt("simulointiaika"));
+					suureet.setPalveltutAsiakkaat(myRs.getInt("palveltut asiakkaat"));
+					suureet.setAktiiviaika(myRs.getDouble("aktiiviaika"));
+					suureet.setKayttoaste(myRs.getDouble("kayttoaste"));
+					suureet.setSuoritusteho(myRs.getDouble("suoritusteho"));
+					suureet.setAvgPalveluaika(myRs.getDouble("avg palveluaika"));
+					lista.add(suureet);
+					}
+				}	catch(SQLException e) {
+					do {
+						System.err.println("Viesti: " + e.getMessage());
+						System.err.println("Viesti: " + e.getErrorCode());
+						System.err.println("Viesti: " + e.getSQLState());
+					} while (e.getNextException() != null);
+				}
+				break;
+			case "juoksumatto":
+				try(PreparedStatement myStatement = myCon.prepareStatement("SELECT * FROM juoksumatto"))
+				{
+					ResultSet myRs = myStatement.executeQuery();
+					while(myRs.next()) {
+					Suorituskykysuureet suureet = new Suorituskykysuureet();
+					suureet.setPaivays(myRs.getString("paivays"));
+					suureet.setSimulointiaika(myRs.getInt("simulointiaika"));
+					suureet.setPalveltutAsiakkaat(myRs.getInt("palveltut asiakkaat"));
+					suureet.setAktiiviaika(myRs.getDouble("aktiiviaika"));
+					suureet.setKayttoaste(myRs.getDouble("kayttoaste"));
+					suureet.setSuoritusteho(myRs.getDouble("suoritusteho"));
+					suureet.setAvgPalveluaika(myRs.getDouble("avg palveluaika"));
+					lista.add(suureet);
+					}
+				}	catch(SQLException e) {
+					do {
+						System.err.println("Viesti: " + e.getMessage());
+						System.err.println("Viesti: " + e.getErrorCode());
+						System.err.println("Viesti: " + e.getSQLState());
+					} while (e.getNextException() != null);
+				}
+				break;
+			case "ryhmaliikunta":
+				try(PreparedStatement myStatement = myCon.prepareStatement("SELECT * FROM ryhmaliikunta"))
+				{
+					ResultSet myRs = myStatement.executeQuery();
+					while(myRs.next()) {
+					Suorituskykysuureet suureet = new Suorituskykysuureet();
+					suureet.setPaivays(myRs.getString("paivays"));
+					suureet.setSimulointiaika(myRs.getInt("simulointiaika"));
+					suureet.setPalveltutAsiakkaat(myRs.getInt("palveltut asiakkaat"));
+					suureet.setAktiiviaika(myRs.getDouble("aktiiviaika"));
+					suureet.setKayttoaste(myRs.getDouble("kayttoaste"));
+					suureet.setSuoritusteho(myRs.getDouble("suoritusteho"));
+					suureet.setAvgPalveluaika(myRs.getDouble("avg palveluaika"));
+					lista.add(suureet);
+					}					
+				}	catch(SQLException e) {
+					do {
+						System.err.println("Viesti: " + e.getMessage());
+						System.err.println("Viesti: " + e.getErrorCode());
+						System.err.println("Viesti: " + e.getSQLState());
+					} while (e.getNextException() != null);
+				}
+				break;
+			}
+			Suorituskykysuureet [] paluuLista = new Suorituskykysuureet[lista.size()];
+			return (Suorituskykysuureet[])lista.toArray(paluuLista);
+		}
+	}
+
+
+

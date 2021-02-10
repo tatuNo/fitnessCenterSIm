@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" tabClosingPolicy="UNAVAILABLE" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/11.0.1">
+  <tabs>
+    <Tab text="Fysioterapia">
+      <content>
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <TableView prefHeight="369.6" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                    <columns>
+                      <TableColumn prefWidth="75.0" text="Päiväys" />
+                      <TableColumn prefWidth="86.39996337890625" text="Simulointiaika" />
+                        <TableColumn prefWidth="114.39996337890625" text="Palveltut asiakkaat" />
+                        <TableColumn prefWidth="66.39996337890625" text="Aktiiviaika" />
+                        <TableColumn prefWidth="65.5999755859375" text="Käyttöaste" />
+                        <TableColumn prefWidth="83.20001220703125" text="Suoritusteho" />
+                        <TableColumn prefWidth="101.60003662109375" text="AVG Palveluaika" />
+                        <TableColumn prefWidth="133.59991455078125" text="Kokonaisoleskeluaika" />
+                        <TableColumn minWidth="0.0" prefWidth="122.4000244140625" text="AVG läpimenoaika" />
+                        <TableColumn prefWidth="147.99993896484375" text="AVG jonopituus" />
+                    </columns>
+                  </TableView>
+               </children></AnchorPane>
+      </content>
+    </Tab>
+    <Tab text="Hieronta">
+      <content>
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <TableView prefHeight="569.6" prefWidth="1000.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <columns>
+                        <TableColumn prefWidth="75.0" text="Päiväys" />
+                        <TableColumn prefWidth="86.39996337890625" text="Simulointiaika" />
+                        <TableColumn prefWidth="114.39996337890625" text="Palveltut asiakkaat" />
+                        <TableColumn prefWidth="66.39996337890625" text="Aktiiviaika" />
+                        <TableColumn prefWidth="65.5999755859375" text="Käyttöaste" />
+                        <TableColumn prefWidth="83.20001220703125" text="Suoritusteho" />
+                        <TableColumn prefWidth="101.60003662109375" text="AVG Palveluaika" />
+                        <TableColumn prefWidth="133.59991455078125" text="Kokonaisoleskeluaika" />
+                        <TableColumn minWidth="0.0" prefWidth="122.4000244140625" text="AVG läpimenoaika" />
+                        <TableColumn prefWidth="147.99993896484375" text="AVG jonopituus" />
+                     </columns>
+                  </TableView>
+               </children></AnchorPane>
+      </content>
+    </Tab>
+      <Tab text="Juoksumatto">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <TableView prefHeight="569.6" prefWidth="1000.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <columns>
+                        <TableColumn prefWidth="75.0" text="Päiväys" />
+                        <TableColumn prefWidth="86.39996337890625" text="Simulointiaika" />
+                        <TableColumn prefWidth="114.39996337890625" text="Palveltut asiakkaat" />
+                        <TableColumn prefWidth="66.39996337890625" text="Aktiiviaika" />
+                        <TableColumn prefWidth="65.5999755859375" text="Käyttöaste" />
+                        <TableColumn prefWidth="83.20001220703125" text="Suoritusteho" />
+                        <TableColumn prefWidth="101.60003662109375" text="AVG Palveluaika" />
+                        <TableColumn prefWidth="133.59991455078125" text="Kokonaisoleskeluaika" />
+                     </columns>
+                  </TableView>
+               </children>
+            </AnchorPane>
+        </content>
+      </Tab>
+      <Tab text="Kuntosali">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <TableView prefHeight="569.6" prefWidth="1000.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <columns>
+                        <TableColumn prefWidth="75.0" text="Päiväys" />
+                        <TableColumn prefWidth="86.39996337890625" text="Simulointiaika" />
+                        <TableColumn prefWidth="114.39996337890625" text="Palveltut asiakkaat" />
+                        <TableColumn prefWidth="66.39996337890625" text="Aktiiviaika" />
+                        <TableColumn prefWidth="65.5999755859375" text="Käyttöaste" />
+                        <TableColumn prefWidth="83.20001220703125" text="Suoritusteho" />
+                        <TableColumn prefWidth="101.60003662109375" text="AVG Palveluaika" />
+                        <TableColumn prefWidth="133.59991455078125" text="Kokonaisoleskeluaika" />
+                     </columns>
+                  </TableView>
+               </children>
+            </AnchorPane>
+        </content>
+      </Tab>
+      <Tab text="MiestenPH">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <TableView prefHeight="569.6" prefWidth="1000.0">
+                     <columns>
+                        <TableColumn prefWidth="75.0" text="Päiväys" />
+                        <TableColumn prefWidth="86.39996337890625" text="Simulointiaika" />
+                        <TableColumn prefWidth="114.39996337890625" text="Palveltut asiakkaat" />
+                        <TableColumn prefWidth="66.39996337890625" text="Aktiiviaika" />
+                        <TableColumn prefWidth="65.5999755859375" text="Käyttöaste" />
+                        <TableColumn prefWidth="83.20001220703125" text="Suoritusteho" />
+                        <TableColumn prefWidth="101.60003662109375" text="AVG Palveluaika" />
+                        <TableColumn prefWidth="133.59991455078125" text="Kokonaisoleskeluaika" />
+                     </columns>
+                  </TableView>
+               </children>
+            </AnchorPane>
+        </content>
+      </Tab>
+      <Tab text="NaistenPH">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <TableView prefHeight="569.6" prefWidth="1000.0">
+                     <columns>
+                        <TableColumn prefWidth="75.0" text="Päiväys" />
+                        <TableColumn prefWidth="86.39996337890625" text="Simulointiaika" />
+                        <TableColumn prefWidth="114.39996337890625" text="Palveltut asiakkaat" />
+                        <TableColumn prefWidth="66.39996337890625" text="Aktiiviaika" />
+                        <TableColumn prefWidth="65.5999755859375" text="Käyttöaste" />
+                        <TableColumn prefWidth="83.20001220703125" text="Suoritusteho" />
+                        <TableColumn prefWidth="101.60003662109375" text="AVG Palveluaika" />
+                        <TableColumn prefWidth="133.59991455078125" text="Kokonaisoleskeluaika" />
+                     </columns>
+                  </TableView>
+               </children>
+            </AnchorPane>
+        </content>
+      </Tab>
+      <Tab text="Röntgen">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <TableView prefHeight="569.6" prefWidth="1000.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <columns>
+                        <TableColumn prefWidth="75.0" text="Päiväys" />
+                        <TableColumn prefWidth="86.39996337890625" text="Simulointiaika" />
+                        <TableColumn prefWidth="114.39996337890625" text="Palveltut asiakkaat" />
+                        <TableColumn prefWidth="66.39996337890625" text="Aktiiviaika" />
+                        <TableColumn prefWidth="65.5999755859375" text="Käyttöaste" />
+                        <TableColumn prefWidth="83.20001220703125" text="Suoritusteho" />
+                        <TableColumn prefWidth="101.60003662109375" text="AVG Palveluaika" />
+                        <TableColumn prefWidth="133.59991455078125" text="Kokonaisoleskeluaika" />
+                        <TableColumn minWidth="0.0" prefWidth="122.4000244140625" text="AVG läpimenoaika" />
+                        <TableColumn prefWidth="147.99993896484375" text="AVG jonopituus" />
+                     </columns>
+                  </TableView>
+               </children>
+            </AnchorPane>
+        </content>
+      </Tab>
+      <Tab text="Ryhmäliikunta">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <TableView prefHeight="569.6" prefWidth="1000.0">
+                     <columns>
+                        <TableColumn prefWidth="75.0" text="Päiväys" />
+                        <TableColumn prefWidth="86.39996337890625" text="Simulointiaika" />
+                        <TableColumn prefWidth="114.39996337890625" text="Palveltut asiakkaat" />
+                        <TableColumn prefWidth="66.39996337890625" text="Aktiiviaika" />
+                        <TableColumn prefWidth="65.5999755859375" text="Käyttöaste" />
+                        <TableColumn prefWidth="83.20001220703125" text="Suoritusteho" />
+                        <TableColumn prefWidth="101.60003662109375" text="AVG Palveluaika" />
+                        <TableColumn prefWidth="133.59991455078125" text="Kokonaisoleskeluaika" />
+                     </columns>
+                  </TableView>
+               </children>
+            </AnchorPane>
+        </content>
+      </Tab>
+      <Tab text="Vastaanotto">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <TableView prefHeight="569.6" prefWidth="1000.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <columns>
+                        <TableColumn prefWidth="75.0" text="Päiväys" />
+                        <TableColumn prefWidth="86.39996337890625" text="Simulointiaika" />
+                        <TableColumn prefWidth="114.39996337890625" text="Palveltut asiakkaat" />
+                        <TableColumn prefWidth="66.39996337890625" text="Aktiiviaika" />
+                        <TableColumn prefWidth="65.5999755859375" text="Käyttöaste" />
+                        <TableColumn prefWidth="83.20001220703125" text="Suoritusteho" />
+                        <TableColumn prefWidth="101.60003662109375" text="AVG Palveluaika" />
+                        <TableColumn prefWidth="133.59991455078125" text="Kokonaisoleskeluaika" />
+                        <TableColumn minWidth="0.0" prefWidth="122.4000244140625" text="AVG läpimenoaika" />
+                        <TableColumn prefWidth="147.99993896484375" text="AVG jonopituus" />
+                     </columns>
+                  </TableView>
+               </children>
+            </AnchorPane>
+        </content>
+      </Tab>
+  </tabs>
+</TabPane>

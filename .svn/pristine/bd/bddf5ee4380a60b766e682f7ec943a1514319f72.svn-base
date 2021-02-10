@@ -1,0 +1,112 @@
+package osat;
+
+public class Suorituskykysuureet {
+	
+	private int palveltutAsiakkaat;
+	private double aktiiviaika;
+	private double kayttoaste;
+	private double suoritusteho;
+	private double avgPalveluaika;
+	private double lapimenoAjat;
+	private double avgLapimenoajat;
+	private double avgjononpituus;
+	private double palveluaika;
+	
+	private String taulunnimi;
+	private String paivays;
+	private int simulointiaika;
+	
+	public Suorituskykysuureet (int palveltutAsiakkaat, double aktiiviaika, double kayttoaste, double suoritusteho, double avgPalveluaika, double lapimenoAjat, double avglapimenoAjat, double avgjononpituus) {
+		this.palveltutAsiakkaat = palveltutAsiakkaat;
+		this.aktiiviaika = aktiiviaika;
+		this.kayttoaste = kayttoaste;
+		this.suoritusteho = suoritusteho;
+		this.avgPalveluaika = avgPalveluaika;
+		this.lapimenoAjat = lapimenoAjat;
+		this.avgLapimenoajat = avglapimenoAjat;
+		this.avgjononpituus = avgjononpituus;
+		
+	}
+	
+	public Suorituskykysuureet (int palveltutAsiakkaat, double aktiiviaika, double kayttoaste, double suoritusteho, double avgpalveluaika) {
+		this.palveltutAsiakkaat = palveltutAsiakkaat;
+		this.aktiiviaika = aktiiviaika;
+		this.kayttoaste = kayttoaste;
+		this.suoritusteho = suoritusteho;
+		this.avgPalveluaika = avgpalveluaika;
+	}
+	public Suorituskykysuureet() {
+		
+	}
+	public void setPaivays (String paivays) {
+		this.paivays = paivays;
+	}
+	
+	public String getPaivays () {
+		return paivays;
+	}
+	
+	public void setSimulointiaika (int aika) {
+		this.simulointiaika = aika;
+	}
+	
+	public int getSimulointiaika () {
+		return this.simulointiaika;
+	}
+	
+	public void setTaulunNimi (String nimi) {
+		this.taulunnimi = nimi;
+	}
+	public String getTaulunNimi () {
+		return taulunnimi;
+	}
+	public int getPalveltutAsiakkaat() {
+		return palveltutAsiakkaat;
+	}
+	public void setPalveltutAsiakkaat(int palveltutAsiakkaat) {
+		this.palveltutAsiakkaat = palveltutAsiakkaat;
+	}
+	public double getAktiiviaika() {
+		return aktiiviaika;
+	}
+	public void setAktiiviaika(double aktiiviaika) {
+		this.aktiiviaika = aktiiviaika;
+	}
+	public double getKayttoaste() {
+		return kayttoaste;
+	}
+	public void setKayttoaste(double kayttoaste) {
+		this.kayttoaste = kayttoaste;
+	}
+	public double getSuoritusteho() {
+		return suoritusteho;
+	}
+	public void setSuoritusteho(double suoritusteho) {
+		this.suoritusteho = suoritusteho;
+	}
+	public double getAvgPalveluaika() {
+		return avgPalveluaika;
+	}
+	public void setAvgPalveluaika(double avgPalveluaika) {
+		this.avgPalveluaika = avgPalveluaika;
+	}
+	public double getLapimenoAjat() {
+		return lapimenoAjat;
+	}
+	public void setLapimenoAjat(double lapimenoAjat) {
+		this.lapimenoAjat = lapimenoAjat;
+	}
+	public double getAvgLapimenoajat() {
+		return avgLapimenoajat;
+	}
+	public void setAvgLapimenoajat(double avgLapimenoajat) {
+		this.avgLapimenoajat = avgLapimenoajat;
+	}
+	public double getAvgjononpituus() {
+		return avgjononpituus;
+	}
+	public void setAvgjononpituus(double avgjononpituus) {
+		this.avgjononpituus = avgjononpituus;
+	}
+	
+}

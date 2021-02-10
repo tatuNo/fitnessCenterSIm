@@ -1,0 +1,19 @@
+package osat;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
+
+import eduni.distributions.Normal;
+import osat.AsiakkaanTyyppi.AsiakkaanSukupuoli;
+import osat.Trace.Level;
+
+public class Simulaattori {
+
+	public static void main(String[] args) {
+		
+
+	}
+}

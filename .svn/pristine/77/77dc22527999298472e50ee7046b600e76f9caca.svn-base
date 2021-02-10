@@ -1,0 +1,22 @@
+package view;
+
+import java.net.URL;
+import java.util.ResourceBundle;
+
+import javafx.fxml.Initializable;
+
+public class StatisticsViewController implements Initializable{
+	private Main main;
+	
+	public void setMain(Main main) {
+        this.main = main;    
+    }
+
+	//handlet kaikille tabeille
+	
+	@Override
+	public void initialize(URL arg0, ResourceBundle arg1) {
+		
+	}
+    
+}

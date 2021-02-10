@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.StatisticsViewController">
+  <tabs>
+    <Tab fx:id="fysioTab" onSelectionChanged="#fysioValittu" text="Fysioterapia">
+      <content>
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <TableView fx:id="fysio" prefHeight="369.6" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                    <columns>
+                      <TableColumn fx:id="paivays" prefWidth="131.19997864961624" text="Päiväys" />
+                      <TableColumn fx:id="simulointiaika" prefWidth="84.80001831054688" text="Simulointiaika" />
+                        <TableColumn fx:id="palveltutasiakkaat" prefWidth="112.80001831054688" text="Palveltut asiakkaat" />
+                        <TableColumn fx:id="aktiiviaika" prefWidth="75.20001220703125" text="Aktiiviaika" />
+                        <TableColumn fx:id="kayttoaste" text="Käyttöaste" />
+                        <TableColumn fx:id="suoritusteho" prefWidth="80.79998779296875" text="Suoritusteho" />
+                        <TableColumn fx:id="avgpalveluaika" prefWidth="96.79998779296875" text="AVG Palveluaika" />
+                        <TableColumn fx:id="kokonaisoleskeluaika" prefWidth="125.5999755859375" text="Kokonaisoleskeluaika" />
+                        <TableColumn fx:id="avglapimenoaika" minWidth="0.0" prefWidth="109.5999755859375" text="AVG läpimenoaika" />
+                        <TableColumn fx:id="avgjononpituus" prefWidth="105.60009765625" text="AVG jonopituus" />
+                    </columns>
+                  </TableView>
+               </children></AnchorPane>
+      </content>
+    </Tab>
+    <Tab fx:id="hierontaTab" onSelectionChanged="#hierontaValittu" text="Hieronta">
+      <content>
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <TableView fx:id="hierontaTable" prefHeight="569.6" prefWidth="1000.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <columns>
+                        <TableColumn fx:id="paivays2" prefWidth="151.99999696016312" text="Päiväys" />
+                        <TableColumn fx:id="simulointiaika2" minWidth="0.0" prefWidth="97.60000610351562" text="Simulointiaika" />
+                        <TableColumn fx:id="palveltutasiakkaat2" prefWidth="110.4000244140625" text="Palveltut asiakkaat" />
+                        <TableColumn fx:id="aktiiviaika2" prefWidth="70.39996337890625" text="Aktiiviaika" />
+                        <TableColumn fx:id="kayttoaste2" prefWidth="67.20001220703125" text="Käyttöaste" />
+                        <TableColumn fx:id="suoritusteho2" prefWidth="79.19998168945312" text="Suoritusteho" />
+                        <TableColumn fx:id="avgpalveluaika2" prefWidth="96.7999267578125" text="AVG Palveluaika" />
+                        <TableColumn fx:id="kokonaisoleskeluaika2" prefWidth="125.5999755859375" text="Kokonaisoleskeluaika" />
+                        <TableColumn fx:id="avglapimenoaika2" minWidth="0.0" prefWidth="108.7999267578125" text="AVG läpimenoaika" />
+                        <TableColumn fx:id="avgjononpituus2" prefWidth="96.0" text="AVG jonopituus" />
+                     </columns>
+                  </TableView>
+               </children></AnchorPane>
+      </content>
+    </Tab>
+      <Tab fx:id="juoksuTab" onSelectionChanged="#juoksuValittu" text="Juoksumatto">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <TableView fx:id="juoksuTable" prefHeight="569.6" prefWidth="1000.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <columns>
+                        <TableColumn fx:id="paivays3" prefWidth="137.59997254610062" text="Päiväys" />
+                        <TableColumn fx:id="simulointiaika3" prefWidth="86.4000244140625" text="Simulointiaika" />
+                        <TableColumn fx:id="palveltutasiakkaat3" prefWidth="126.39997863769531" text="Palveltut asiakkaat" />
+                        <TableColumn fx:id="aktiiviaika3" prefWidth="84.0" text="Aktiiviaika" />
+                        <TableColumn fx:id="kayttoaste3" prefWidth="113.60003662109375" text="Käyttöaste" />
+                        <TableColumn fx:id="suoritusteho3" prefWidth="108.0" text="Suoritusteho" />
+                        <TableColumn fx:id="avgpalveluaika3" prefWidth="152.80010986328125" text="AVG Palveluaika" />
+                     </columns>
+                  </TableView>
+               </children>
+            </AnchorPane>
+        </content>
+      </Tab>
+      <Tab fx:id="kuntosaliTab" onSelectionChanged="#kuntosaliValittu" text="Kuntosali">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <TableView fx:id="kuntosaliTable" prefHeight="569.6" prefWidth="1000.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <columns>
+                        <TableColumn fx:id="paivays4" prefWidth="139.19997864961624" text="Päiväys" />
+                        <TableColumn fx:id="simulointiaika4" prefWidth="143.2000274658203" text="Simulointiaika" />
+                        <TableColumn fx:id="palveltutasiakkaat4" prefWidth="145.60000610351562" text="Palveltut asiakkaat" />
+                        <TableColumn fx:id="aktiiviaika4" prefWidth="126.4000244140625" text="Aktiiviaika" />
+                        <TableColumn fx:id="kayttoaste4" prefWidth="120.800048828125" text="Käyttöaste" />
+                        <TableColumn fx:id="suoritusteho4" prefWidth="154.4000244140625" text="Suoritusteho" />
+                        <TableColumn fx:id="avgpalveluaika4" prefWidth="132.00006103515625" text="AVG Palveluaika" />
+                     </columns>
+                  </TableView>
+               </children>
+            </AnchorPane>
+        </content>
+      </Tab>
+      <Tab fx:id="miestenPHTab" onSelectionChanged="#miestenPHValittu" text="MiestenPH">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <TableView fx:id="miestenPHTable" prefHeight="569.6" prefWidth="1000.0">
+                     <columns>
+                        <TableColumn fx:id="paivays5" prefWidth="137.59997254610062" text="Päiväys" />
+                        <TableColumn fx:id="simulointiaika5" prefWidth="94.39996337890625" text="Simulointiaika" />
+                        <TableColumn fx:id="palveltutasiakkaat5" prefWidth="113.60005187988281" text="Palveltut asiakkaat" />
+                        <TableColumn fx:id="aktiiviaika5" text="Aktiiviaika" />
+                        <TableColumn fx:id="kayttoaste5" prefWidth="84.0" text="Käyttöaste" />
+                        <TableColumn fx:id="suoritusteho5" prefWidth="88.0" text="Suoritusteho" />
+                        <TableColumn fx:id="avgpalveluaika5" prefWidth="139.199951171875" text="AVG Palveluaika" />
+                     </columns>
+                  </TableView>
+               </children>
+            </AnchorPane>
+        </content>
+      </Tab>
+      <Tab fx:id="naistenPHTab" onSelectionChanged="#naistenPHValittu" text="NaistenPH">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <TableView fx:id="naistenPHTable" prefHeight="569.6" prefWidth="1000.0">
+                     <columns>
+                        <TableColumn fx:id="paivays6" prefWidth="138.39996033906937" text="Päiväys" />
+                        <TableColumn fx:id="simulointiaika6" prefWidth="92.80001831054688" text="Simulointiaika" />
+                        <TableColumn fx:id="palveltutasiakkaat6" prefWidth="110.40003967285156" text="Palveltut asiakkaat" />
+                        <TableColumn fx:id="aktiiviaika6" prefWidth="71.20001220703125" text="Aktiiviaika" />
+                        <TableColumn fx:id="kayttoaste6" prefWidth="80.79998779296875" text="Käyttöaste" />
+                        <TableColumn fx:id="suoritusteho6" prefWidth="88.0" text="Suoritusteho" />
+                        <TableColumn fx:id="avgpalveluaika6" prefWidth="113.60003662109375" text="AVG Palveluaika" />
+                     </columns>
+                  </TableView>
+               </children>
+            </AnchorPane>
+        </content>
+      </Tab>
+      <Tab fx:id="rontgenTab" onSelectionChanged="#rontgenValittu" text="Röntgen">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <TableView fx:id="rontgenTable" prefHeight="569.6" prefWidth="1000.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <columns>
+                        <TableColumn fx:id="paivays7" prefWidth="123.19998472929001" text="Päiväys" />
+                        <TableColumn fx:id="simulointiaika7" prefWidth="85.5999755859375" text="Simulointiaika" />
+                        <TableColumn fx:id="palveltutasiakkaat7" prefWidth="110.39994812011719" text="Palveltut asiakkaat" />
+                        <TableColumn fx:id="aktiiviaika7" prefWidth="68.79998779296875" text="Aktiiviaika" />
+                        <TableColumn fx:id="kayttoaste7" prefWidth="68.0" text="Käyttöaste" />
+                        <TableColumn fx:id="suoritusteho7" prefWidth="84.79998779296875" text="Suoritusteho" />
+                        <TableColumn fx:id="avgpalveluaika7" prefWidth="99.20001220703125" text="AVG Palveluaika" />
+                        <TableColumn fx:id="kokonaisoleskeluaika7" prefWidth="126.4000244140625" text="Kokonaisoleskeluaika" />
+                        <TableColumn fx:id="avglapimenoaika7" minWidth="0.0" prefWidth="109.5999755859375" text="AVG läpimenoaika" />
+                        <TableColumn fx:id="avgjononpituus7" prefWidth="148.00006103515625" text="AVG jonopituus" />
+                     </columns>
+                  </TableView>
+               </children>
+            </AnchorPane>
+        </content>
+      </Tab>
+      <Tab fx:id="ryhmaliikuntaTab" onSelectionChanged="#ryhmaliikuntaValittu" text="Ryhmäliikunta">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <TableView fx:id="ryhmaliikuntaTable" prefHeight="569.6" prefWidth="1000.0">
+                     <columns>
+                        <TableColumn fx:id="paivays9" prefWidth="137.59997254610062" text="Päiväys" />
+                        <TableColumn fx:id="simulointiaika9" prefWidth="107.20001220703125" text="Simulointiaika" />
+                        <TableColumn fx:id="palveltutasiakkaat9" prefWidth="117.59999084472656" text="Palveltut asiakkaat" />
+                        <TableColumn fx:id="aktiiviaika9" prefWidth="71.2000732421875" text="Aktiiviaika" />
+                        <TableColumn fx:id="kayttoaste9" prefWidth="88.0" text="Käyttöaste" />
+                        <TableColumn fx:id="suoritusteho9" prefWidth="120.79998779296875" text="Suoritusteho" />
+                        <TableColumn fx:id="avgpalveluaika9" prefWidth="130.4000244140625" text="AVG Palveluaika" />
+                     </columns>
+                  </TableView>
+               </children>
+            </AnchorPane>
+        </content>
+      </Tab>
+      <Tab fx:id="vastaanottoTab" onSelectionChanged="#vastaanottoValittu" text="Vastaanotto">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <TableView fx:id="vastaanottoTable" prefHeight="569.6" prefWidth="1000.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <columns>
+                        <TableColumn fx:id="paivays8" prefWidth="136.00000303983688" text="Päiväys" />
+                        <TableColumn fx:id="simulointiaika8" prefWidth="111.20001220703125" text="Simulointiaika" />
+                        <TableColumn fx:id="palveltutasiakkaat8" prefWidth="112.79997253417969" text="Palveltut asiakkaat" />
+                        <TableColumn fx:id="aktiiviaika8" prefWidth="64.79998779296875" text="Aktiiviaika" />
+                        <TableColumn fx:id="kayttoaste8" prefWidth="68.0" text="Käyttöaste" />
+                        <TableColumn fx:id="suoritusteho8" prefWidth="79.20001220703125" text="Suoritusteho" />
+                        <TableColumn fx:id="avgpalveluaika8" prefWidth="96.79998779296875" text="AVG Palveluaika" />
+                        <TableColumn fx:id="kokonaisoleskeluaika8" prefWidth="125.60003662109375" text="Kokonaisoleskeluaika" />
+                        <TableColumn fx:id="avglapimenoaika8" minWidth="0.0" prefWidth="109.60009765625" text="AVG läpimenoaika" />
+                        <TableColumn fx:id="avgjononpituus8" prefWidth="96.800048828125" text="AVG jonopituus" />
+                     </columns>
+                  </TableView>
+               </children>
+            </AnchorPane>
+        </content>
+      </Tab>
+  </tabs>
+</TabPane>

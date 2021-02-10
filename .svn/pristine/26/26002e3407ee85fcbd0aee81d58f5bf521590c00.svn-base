@@ -1,0 +1,32 @@
+package view;
+
+import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
+
+public class RootLayoutController {
+
+    // Reference to the main application
+    private Main main;
+    
+    public void setMain(Main main) {
+        this.main = main;
+    }
+    /**
+     * Opens an about dialog.
+     */
+    @FXML
+    private void handleAbout() {
+    	Alert alert = new Alert(AlertType.INFORMATION);
+    	alert.setTitle("Kuntosali Simulaattori");
+    	alert.setHeaderText("Tietoja");
+    	alert.setContentText("Tekijät: Nico Järvinen ja Tatu Nordström");
+
+    	alert.showAndWait();
+    }
+
+    @FXML
+    private void handleExit() {
+        System.exit(0);
+    }
+}

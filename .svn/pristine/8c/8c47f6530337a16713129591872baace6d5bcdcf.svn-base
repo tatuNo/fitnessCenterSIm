@@ -1,0 +1,32 @@
+package osat;
+
+import java.util.Random;
+
+public enum AsiakkaanTyyppi {
+	RONTGEN,
+	JUOKSIJA,
+	KUNTOSALI,
+	FYSIOTERAPIA,
+	HIERONTA,
+	RYHMALIIKUNTA;
+	
+public enum AsiakkaanSukupuoli {
+	MIES,
+	NAINEN;
+}
+
+private static final AsiakkaanTyyppi[] TYYPIT = AsiakkaanTyyppi.values();
+private static final int KOKO = TYYPIT.length;
+private static final Random RANDOM = new Random();
+private static final AsiakkaanSukupuoli [] SUKUPUOLET = AsiakkaanSukupuoli.values();
+private static final int KOKO2 = SUKUPUOLET.length;
+
+public static AsiakkaanTyyppi arvoTyyppi()  {
+	return TYYPIT[RANDOM.nextInt(KOKO)];
+	}
+
+public static AsiakkaanSukupuoli arvoSukupuoli()  {
+	return SUKUPUOLET[RANDOM.nextInt(KOKO2)];
+	}
+}
+

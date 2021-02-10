@@ -1,0 +1,18 @@
+package osat;
+
+import osat.AsiakkaanTyyppi.AsiakkaanSukupuoli;
+
+public interface MoottoriIf {
+		
+	// Kontrolleri käyttää tätä rajapintaa
+	
+	public void setSimulointiaika(double aika);
+	public void setViive(long aika);
+	public long getViive();
+	public boolean asiakkaanSukupuoli();
+	public long getId();
+	public void tallennaTulokset();
+	public int getPalveltutAsiakkaat();
+	public int getKaikkiAsiakkaat();
+	public double getAika();
+}

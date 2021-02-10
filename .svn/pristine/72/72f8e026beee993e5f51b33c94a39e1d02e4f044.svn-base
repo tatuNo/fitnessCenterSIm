@@ -1,0 +1,17 @@
+package osat;
+
+public enum TapahtumanTyyppi {
+	ARR1, // Saapuminen vastaanottooon
+	DEP1, // Lähteminen vastaanotosta
+	DEP2, // Lähteminen miesten pukuhuoneesta
+	DEP3,  // Lähteminen naisten pukuhuoneesta
+	DEP4, // Lähteminen röntgenistä
+	DEP5, // Lähteminen hieronnasta
+	DEP6, // Lähteminen ryhmäliikunnasta
+	DEP7, // Lähteminen fysioterapiasta
+	DEP8, // Lähteminen kuntosalista
+	DEP9, // Lähteminen juoksumatolta
+	DEP10, // Poistuminen miesten pukuhuoneesta ja kuntokeskuksesta
+	DEP11, // Poistuminen naisten pukuhuoneesta ja kuntokeskuksesta
+
+}
